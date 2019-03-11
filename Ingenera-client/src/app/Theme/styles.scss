@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+@import './themeTypes/lightTheme.scss';
+//themes:
+.dark{
+    @import './themeTypes/darkTheme.scss';
+    }
+
+//import custom global css
+@import './custom';

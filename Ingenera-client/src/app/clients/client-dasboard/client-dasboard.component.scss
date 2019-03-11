@@ -1,0 +1,13 @@
+.client-cards{
+cursor: pointer;
+
+.card {
+    &:hover{
+    background-color: #eee
+}
+
+}
+.active-card{
+    background-color: #eee
+}
+}

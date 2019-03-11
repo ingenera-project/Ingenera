@@ -1,0 +1,89 @@
+<div class="col-md-6">
+
+  <h4>Sign up now !</h4>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()" novalidate>
+    <!--firstname-->
+    <div class="form-group">
+      <label class="center-block">Firstname: </label>
+      <input class="form-control" formControlName="firstname">
+
+      <div class="error-description">
+        <p *ngIf="registerForm.controls['firstname'].hasError('required') && registerForm.controls['firstname'].touched ">*
+          First name is required. </p>
+        <p *ngIf="registerForm.controls['firstname'].hasError('minlength') && registerForm.controls['firstname'].touched ">*
+          First name should be at least 2 characters long </p>
+        <p *ngIf="registerForm.controls['firstname'].hasError('pattern') && registerForm.controls['firstname'].touched ">*
+          First name cannot be only whitespaces </p>
+
+      </div>
+    </div>
+    <!--lastname-->
+    <div class="form-group">
+      <label class="center-block">Lastname: </label>
+      <input class="form-control" formControlName="lastname">
+
+      <div class="error-description">
+        <p *ngIf="registerForm.controls['lastname'].hasError('required') && registerForm.controls['lastname'].touched ">*
+          Last name is required. </p>
+        <p *ngIf="registerForm.controls['lastname'].hasError('minlength') && registerForm.controls['lastname'].touched ">*
+          Last name should be at least 2 characters long </p>
+        <p *ngIf="registerForm.controls['lastname'].hasError('pattern') && registerForm.controls['lastname'].touched ">*
+          Last name cannot be only whitespaces </p>
+      </div>
+    </div>
+
+    <!--mail-->
+    <div class="form-group">
+      <label class="center-block">Email:</label>
+      <input class="form-control" formControlName="email" (blur)="checkDuplicate('email',registerForm.value.email,registerForm)"
+        (change)="emailError=false" (keydown.space)="$event.preventDefault()">
+
+      <div class="error-description">
+        <p *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched ">*Email
+          isrequired.
+        </p>
+        <p class="error-description" [hidden]="!emailError">This Email is already used.</p>
+        <p *ngIf="registerForm.controls['email'].hasError('pattern') && registerForm.controls['email'].touched ">* Please
+          enter a valid email </p>
+      </div>
+    </div>
+
+    <!--Password-->
+    <div class="form-group">
+      <label class="center-block">Password:</label>
+      <input class="form-control" formControlName="password" type="password" (keydown.space)="$event.preventDefault()">
+
+      <div class="error-description">
+        <p *ngIf="registerForm.controls['password'].hasError('required') && registerForm.controls['password'].touched ">*
+          Password is required. </p>
+        <p *ngIf="registerForm.controls['password'].hasError('minlength') && registerForm.controls['password'].touched ">*
+          Password should be at least 4 characters long </p>
+      </div>
+    </div>
+
+
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" (click)='checkRole(1)' checked='role==1'>
+      <label class="form-check-label" for="exampleRadios1">
+        Looking For Talents
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (click)='checkRole(2)' checked='role==2'>
+      <label class="form-check-label" for="exampleRadios2">
+        Looking for missions
+      </label>
+    </div>
+
+    <div class="form-check pt-4 pb-4">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
+        I accept terms and conditions
+      </label>
+    </div>
+    <button class="btn btn-primary" [ngClass]="{'disabled' : registerForm.invalid }" [disabled]="registerForm.invalid">Signup</button>
+
+
+  </form>
+
+</div>
