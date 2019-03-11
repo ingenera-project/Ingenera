@@ -1,0 +1,13 @@
+<!-- <app-header></app-header> -->
+<!-- <router-outlet></router-outlet> -->
+<div>
+  <h3 class="p-5">{{ 'welcome' | translate}}</h3>
+<p>{{ 'TITLE' | translate }}</p>
+
+<div>
+  <p>{{ 'SelectLanguage' | translate }}</p>
+    <button (click)="setLang('fr')">Language: Franch</button>
+    <button (click)="setLang('en')">Language: EN</button>
+  </div>
+
+</div>
