@@ -7,12 +7,13 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import { AuthGuard } from './guards';
+import { AuthServiceService } from './guards/auth.guard'
+import { RoleGuardService } from './guards/role.guard';
 import { AppRoutingModule } from '../../app/app-routing.module';
-import{SharedModule}from '../shared/shared.module'
+import { SharedModule } from '../shared/shared.module'
 // Import components
 import {
-    AppHeaderComponent, AppHeaderClientComponent,AppHeaderBusinessComponent
+    AppHeaderComponent, AppHeaderClientComponent, AppHeaderBusinessComponent
 } from '../core/components';
 
 const APP_COMPONENTS = [
@@ -34,7 +35,7 @@ import { BusinessLayoutComponent } from './containers/business-layout/business-l
     ],
     declarations: [...APP_COMPONENTS],
     providers: [
-        AuthGuard
+        AuthServiceService, RoleGuardService
     ],
     exports: [
         ...APP_COMPONENTS,
