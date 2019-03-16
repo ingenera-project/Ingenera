@@ -4,7 +4,7 @@ import { LoginComponent, SignupComponent, ResetPasswordComponent, ForgetPassword
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'resetPassword', component: ResetPasswordComponent },
+  { path: 'resetPassword/:id', component: ResetPasswordComponent },
   { path: 'forgetPassword', component: ForgetPasswordComponent },
   { path: 'signup', component: SignupComponent },
 ]
