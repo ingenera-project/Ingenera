@@ -5,14 +5,14 @@
     <!--firstname-->
     <div class="form-group">
       <label class="center-block">Firstname: </label>
-      <input class="form-control" formControlName="firstname">
+      <input class="form-control" formControlName="firstName">
 
       <div class="error-description">
-        <p *ngIf="registerForm.controls['firstname'].hasError('required') && registerForm.controls['firstname'].touched ">*
+        <p *ngIf="registerForm.controls['firstName'].hasError('required') && registerForm.controls['firstName'].touched ">*
           First name is required. </p>
-        <p *ngIf="registerForm.controls['firstname'].hasError('minlength') && registerForm.controls['firstname'].touched ">*
+        <p *ngIf="registerForm.controls['firstName'].hasError('minlength') && registerForm.controls['firstName'].touched ">*
           First name should be at least 2 characters long </p>
-        <p *ngIf="registerForm.controls['firstname'].hasError('pattern') && registerForm.controls['firstname'].touched ">*
+        <p *ngIf="registerForm.controls['firstName'].hasError('pattern') && registerForm.controls['firstName'].touched ">*
           First name cannot be only whitespaces </p>
 
       </div>
@@ -20,14 +20,14 @@
     <!--lastname-->
     <div class="form-group">
       <label class="center-block">Lastname: </label>
-      <input class="form-control" formControlName="lastname">
+      <input class="form-control" formControlName="lastName">
 
       <div class="error-description">
-        <p *ngIf="registerForm.controls['lastname'].hasError('required') && registerForm.controls['lastname'].touched ">*
+        <p *ngIf="registerForm.controls['lastName'].hasError('required') && registerForm.controls['lastName'].touched ">*
           Last name is required. </p>
-        <p *ngIf="registerForm.controls['lastname'].hasError('minlength') && registerForm.controls['lastname'].touched ">*
+        <p *ngIf="registerForm.controls['lastName'].hasError('minlength') && registerForm.controls['lastName'].touched ">*
           Last name should be at least 2 characters long </p>
-        <p *ngIf="registerForm.controls['lastname'].hasError('pattern') && registerForm.controls['lastname'].touched ">*
+        <p *ngIf="registerForm.controls['lastName'].hasError('pattern') && registerForm.controls['lastName'].touched ">*
           Last name cannot be only whitespaces </p>
       </div>
     </div>
@@ -63,13 +63,13 @@
 
 
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" (click)='checkRole(1)' checked='role==1'>
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" (click)='checkRole("pm")' checked='role=="pm"'>
       <label class="form-check-label" for="exampleRadios1">
         Looking For Talents
       </label>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (click)='checkRole(2)' checked='role==2'>
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" (click)='checkRole("bm")' checked='role=="bm"'>
       <label class="form-check-label" for="exampleRadios2">
         Looking for missions
       </label>

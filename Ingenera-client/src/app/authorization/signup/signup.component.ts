@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Authervice } from '../auth.service';
+import { ToastService } from '../../toast.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -9,12 +11,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
 
   registerForm: FormGroup;
-  role: 1
+  role: "pm"
   // 2 = bm(looking for missions) , 
   // 1 =client"Project Manager" (looking for talents)
 
 
-  constructor(private fb: FormBuilder, ) { }
+  constructor(private fb: FormBuilder,
+    private _auth: Authervice,
+    private router: Router,
+    public toast: ToastService
+  ) { }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -26,12 +32,28 @@ export class SignupComponent implements OnInit {
   }
 
   onRegister() {
-    let user = { ...this.registerForm.value, role: this.role }
-    console.log('New user data : ', user)
+    if (this.registerForm.valid) {
+      let user = { ...this.registerForm.value, role: this.role }
+      return this._auth.signup(user)
+        .then(({ data }) => {
+          if (data.status === 409) {
+            this.toast.showErorr(data.message)
+          } else {
+            localStorage.setItem("token", data.token)
+            localStorage.setItem("loggedIn", 'true')
+            data.role === "pm" ? this.router.navigate(['client']) : this.router.navigate(['bm'])
+            this.toast.presentToast(data.message)
+          }
+        }).catch(err => {
+          console.log(err)
+          this.toast.showErorr('Error Occurred, please check your internet')
+        })
+
+    }
   }
 
-  checkRole(roleId) {
-    this.role = roleId
+  checkRole(roleType) {
+    this.role = roleType
   }
 
 

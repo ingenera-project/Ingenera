@@ -12,4 +12,8 @@ export class Authervice {
     return Axios.post('/api/auth/login', { email, password })
   }
 
+  signup(user: object) {
+    return Axios.post('api/auth/signup', user)
+  }
+
 }
