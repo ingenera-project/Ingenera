@@ -20,4 +20,8 @@ export class Authervice {
     return Axios.post('api/auth/forget', { email })
   }
 
+  resetPassword(newPass: String, id: String) {
+    return Axios.post('api/auth/reset', { newPass, id })
+  }
+
 }
