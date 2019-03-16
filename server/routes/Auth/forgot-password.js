@@ -120,7 +120,7 @@ module.exports = forgetPass = (req, res, next) => {
                 
                                             <br/><br/>
                 
-                                            To reset your password  , <a href="http://localhost:3001/reset/${id}">please follow this link</a>
+                                            To reset your password  , <a href="http://localhost:3001/auth/resetPassword/${id}">please follow this link</a>
                 
                                             <br/><br/>
                 

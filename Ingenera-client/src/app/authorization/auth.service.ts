@@ -9,11 +9,15 @@ export class Authervice {
 
   login(email: string, password: string) {
     console.log('login with ', email, ' and ', password)
-    return Axios.post('/api/auth/login', { email, password })
+    return Axios.post('forgetapi/auth/login', { email, password })
   }
 
   signup(user: object) {
     return Axios.post('api/auth/signup', user)
+  }
+
+  forgetPassword(email: String) {
+    return Axios.post('api/auth/forget', { email })
   }
 
 }
