@@ -29,8 +29,8 @@ const { users } = require('../../../Database/usersSchema')
 // })
 
 module.exports = register = async (req, res) => {
-	const { firstName, email, password, acceptTerms, userType } = req.body;
-	// console.log(firstName, email, password, acceptTerms, userType)
+	const { firstName, email, lastName, password, role } = req.body;
+	// console.log(firstName, email, password,lastName, acceptTerms, role)
 	users.find({ email: email }, (err, data) => {
 		if (err) {
 			res.sendStatus(500);
@@ -56,12 +56,8 @@ module.exports = register = async (req, res) => {
 					res.send({
 						status: 200,
 						token,
-						valid: true,
-						userType,
+						role,
 						message: `Welcome ${firstName}`,
-						firstName,
-						email,
-						routes: userType === "pm" ? "landing" : userType === "bm" ? "bmHome" : "adminHome"
 					});
 				});
 			});

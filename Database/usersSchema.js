@@ -9,7 +9,7 @@ let Users = new Schema({
     acceptTerms: { type: Boolean },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: String },
-    userType: {
+    role: {
         type: String,
         enum: ["Admin", "pm", "bm"]
     },

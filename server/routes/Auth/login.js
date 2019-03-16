@@ -23,15 +23,14 @@ module.exports = login = (req, res) => {
 				}
 				if (match) {
 					const token = jwt.sign({
-						userType: data.userType,
+						role: data.role,
 						email, id: data._id
 					}, config.secret);
 					res.send({
-						userType: data.userType,
+						role: data.role,
 						token,
 						code: 200,
 						message: `Welcome Back ${data.firstName}`,
-						email,
 						firstName: data.firstName
 
 					});

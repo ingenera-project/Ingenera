@@ -32,7 +32,7 @@ const routes: Routes = [
     loadChildren: '../app/clients/clients.module#ClientsModule',
     canActivate: [RoleGuardService],
     data: {
-      expectedRole: 'bm'
+      expectedRole: 'pm'
     }
   },
   {
