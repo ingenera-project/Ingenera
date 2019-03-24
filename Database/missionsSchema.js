@@ -1,18 +1,17 @@
 const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let missionsSchema = new Schema({
-    companyName: { type: String },
     status: { type: Number }, /* isPuplished [0 , 1 , 2] 0 => save without puplish, 1 => puplish, 2 => closed mission */
-    missionTittle: { type: String },
-    phase: { type: Number },
-    serviceLocation: { type: Number },
-    adress: { type: String },
+    title: { type: String },
+    phase: { type: Number }, /* 0, 1 , 2, 3  */
+    serviceLocation: { type: Number },  /* 0, 1 */
+    address: { type: String },
     termsAndCondition: { type: String },
     acceptTerms: { type: Boolean },
     experience: { type: String },
     description: { type: String },
     keywords: [{
-        type: String
+        type: Object
     }],
     budget: { type: Number },
     isDeleted: { type: Number } // 0 or 1
