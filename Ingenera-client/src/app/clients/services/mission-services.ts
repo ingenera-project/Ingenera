@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import axios from 'axios';
 @Injectable()
 export class MissionService {
 
@@ -8,15 +8,12 @@ export class MissionService {
 
     create(mission) {
         console.log('create new mission', mission)
-        return true
+        return axios.post('api/mission/create', mission)
     }
 
-    save(mission) {
-        console.log('save new mission', mission)
-        return true
-    }
-    getAll(statusId){
-        console.log('getMissions with status,',statusId)
+
+    getAll(statusId) {
+        console.log('getMissions with status,', statusId)
 
     }
 }

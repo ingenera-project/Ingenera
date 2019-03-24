@@ -29,15 +29,15 @@
 
 
       <div class="form-group">
-        <label for="exampleInputEmail1">Mission titile</label>
-        <input formControlName="titile" type="text" class="form-control" id="exampleInputEmail1" placeholder="mission title">
+        <label for="exampleInputEmail1">Mission title</label>
+        <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="mission title">
         <div class="error-description">
-          <p *ngIf="missionForm.controls['titile'].hasError('required') && missionForm.controls['titile'].touched ">* mission
-            titile is required. </p>
-          <p *ngIf="missionForm.controls['titile'].hasError('minlength') && missionForm.controls['titile'].touched ">* mission
-            titile should be at least 2 characters long </p>
-          <p *ngIf="missionForm.controls['titile'].hasError('pattern') && missionForm.controls['titile'].touched ">* mission
-            titile cannot be only whitespaces </p>
+          <p *ngIf="missionForm.controls['title'].hasError('required') && missionForm.controls['title'].touched ">* mission
+            title is required. </p>
+          <p *ngIf="missionForm.controls['title'].hasError('minlength') && missionForm.controls['title'].touched ">* mission
+            title should be at least 2 characters long </p>
+          <p *ngIf="missionForm.controls['title'].hasError('pattern') && missionForm.controls['title'].touched ">* mission
+            title cannot be only whitespaces </p>
 
         </div>
 

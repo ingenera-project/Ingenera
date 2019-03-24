@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         } else {
           localStorage.setItem("token", data.token)
           localStorage.setItem("loggedIn", 'true')
-         data.role === "pm" ? this.router.navigate(['client']) : this.router.navigate(['bm'])
+          data.role === "pm" ? this.router.navigate(['client']) : this.router.navigate(['bm'])
           this.toast.presentToast(data.message)
         }
       })
