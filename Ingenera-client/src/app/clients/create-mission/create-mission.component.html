@@ -2,105 +2,119 @@
   Lets Create Mission !!!
 </h3>
 
-<form [formGroup]="missionForm" class="row"novalidate>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label for="exampleFormControlTextarea2">Mission description</label>
-        <textarea formControlName="description" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="15" placeholder="mission description..."></textarea>
-       
-        <div class="error-description">
-            <p *ngIf="missionForm.controls['description'].hasError('required') && missionForm.controls['description'].touched ">* mission
-                description is required. </p>
-            <p *ngIf="missionForm.controls['description'].hasError('minlength') && missionForm.controls['description'].touched ">* mission
-                description should be at least 10 characters long </p>
-            <p *ngIf="missionForm.controls['description'].hasError('pattern') && missionForm.controls['description'].touched ">* mission
-                description cannot be only whitespaces </p>
-  
-          </div>
-     
-      </div>
-      <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile">
-          <label class="custom-file-label" for="customFile">Upload terms and conditions file (optional)</label>
-        </div>
-    </div>
-    <div class="col-md-6">
 
+<form [formGroup]="missionForm" class="row" novalidate>
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="exampleFormControlTextarea2">Mission description</label>
+      <textarea formControlName="description" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="15" placeholder="mission description..."></textarea>
 
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Mission title</label>
-        <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="mission title">
-        <div class="error-description">
-          <p *ngIf="missionForm.controls['title'].hasError('required') && missionForm.controls['title'].touched ">* mission
-            title is required. </p>
-          <p *ngIf="missionForm.controls['title'].hasError('minlength') && missionForm.controls['title'].touched ">* mission
-            title should be at least 2 characters long </p>
-          <p *ngIf="missionForm.controls['title'].hasError('pattern') && missionForm.controls['title'].touched ">* mission
-            title cannot be only whitespaces </p>
-
-        </div>
+      <div class="error-description">
+        <p *ngIf="missionForm.controls['description'].hasError('required') && missionForm.controls['description'].touched ">*
+          mission description is required. </p>
+        <p *ngIf="missionForm.controls['description'].hasError('minlength') && missionForm.controls['description'].touched ">*
+          mission description should be at least 10 characters long </p>
+        <p *ngIf="missionForm.controls['description'].hasError('pattern') && missionForm.controls['description'].touched ">*
+          mission description cannot be only whitespaces </p>
 
       </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Address</label>
-        <input formControlName="address" type="text" class="form-control" id="exampleInputEmail1" placeholder="mission title">
-        <div class="error-description">
-          <p *ngIf="missionForm.controls['address'].hasError('required') && missionForm.controls['address'].touched ">* address
-            is required. </p>
-          <p *ngIf="missionForm.controls['address'].hasError('minlength') && missionForm.controls['address'].touched ">*
-            address should be at least 2 characters long </p>
-          <p *ngIf="missionForm.controls['address'].hasError('pattern') && missionForm.controls['address'].touched ">* address
-            cannot be only whitespaces </p>
-
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Project phase</label>
-        <div class="input-group-prepend">
-          <button (click)="onPhaseSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='0'}" type="button">Advice</button>
-          <button (click)="onPhaseSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='1'}" type="button">Studay</button>
-          <button (click)="onPhaseSelected(2)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='2'}" type="button">Desighn</button>
-          <button (click)="onPhaseSelected(3)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='3'}" type="button">Develop</button>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Service Location</label>
-
-        <div class="input-group-prepend">
-          <button (click)="onLocationSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':location=='0'}"
-            type="button">Service Provider</button>
-          <button (click)="onLocationSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':location=='1'}"
-            type="button">SUR</button>
-        </div>
-      </div>
-
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Years of experiance</label>
-        <div class="input-group-prepend">
-          <button (click)="onExperianceSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='0'}"
-            type="button">0 - 2</button>
-          <button (click)="onExperianceSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='1'}"
-            type="button">2 - 5</button>
-          <button (click)="onExperianceSelected(2)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='2'}"
-            type="button">5 - 10</button>
-          <button (click)="onExperianceSelected(3)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='3'}"
-            type="button"> > 10 </button>
-        </div>
-      </div>
-
-
-      <div class="form-group">
-        <label for="exampleInputEmail1">Mission Budget</label>
-        <input type="text" class="form-control col-2" id="exampleInputEmail1" placeholder="0$">
-      </div>
-
 
     </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="customFile">
+      <label class="custom-file-label" for="customFile">Upload terms and conditions file (optional)</label>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="col-md-6">
+
+    <div class="form-group">
+      <label for="exampleInpmissionDateutEmail1">Mission Dates</label>
+      <input formControlName="missionDates" type="text" id='missionDate' placeholder="Daterangepicker" class="form-control" bsDaterangepicker 
+      [bsConfig]="{rangeInputFormat: 'DD-MM-YYYY',containerClass: 'theme-blue'}">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Mission title</label>
+      <input formControlName="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="mission title">
+      <div class="error-description">
+        <p *ngIf="missionForm.controls['title'].hasError('required') && missionForm.controls['title'].touched ">* mission
+          title is required. </p>
+        <p *ngIf="missionForm.controls['title'].hasError('minlength') && missionForm.controls['title'].touched ">* mission
+          title should be at least 2 characters long </p>
+        <p *ngIf="missionForm.controls['title'].hasError('pattern') && missionForm.controls['title'].touched ">* mission
+          title cannot be only whitespaces </p>
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Address</label>
+      <input formControlName="address" type="text" class="form-control" id="exampleInputEmail1" placeholder="mission title">
+      <div class="error-description">
+        <p *ngIf="missionForm.controls['address'].hasError('required') && missionForm.controls['address'].touched ">* address
+          is required. </p>
+        <p *ngIf="missionForm.controls['address'].hasError('minlength') && missionForm.controls['address'].touched ">* address
+          should be at least 2 characters long </p>
+        <p *ngIf="missionForm.controls['address'].hasError('pattern') && missionForm.controls['address'].touched ">* address
+          cannot be only whitespaces </p>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Project phase</label>
+      <div class="input-group-prepend">
+        <button (click)="onPhaseSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='0'}" type="button">Advice</button>
+        <button (click)="onPhaseSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='1'}" type="button">Studay</button>
+        <button (click)="onPhaseSelected(2)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='2'}" type="button">Desighn</button>
+        <button (click)="onPhaseSelected(3)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':phase=='3'}" type="button">Develop</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Service Location</label>
+
+      <div class="input-group-prepend">
+        <button (click)="onLocationSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':location=='0'}"
+          type="button">Service Provider</button>
+        <button (click)="onLocationSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':location=='1'}"
+          type="button">SUR</button>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Years of experiance</label>
+      <div class="input-group-prepend">
+        <button (click)="onExperianceSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='0'}"
+          type="button">0 - 2</button>
+        <button (click)="onExperianceSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='1'}"
+          type="button">2 - 5</button>
+        <button (click)="onExperianceSelected(2)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='2'}"
+          type="button">5 - 10</button>
+        <button (click)="onExperianceSelected(3)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='3'}"
+          type="button"> > 10 </button>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Mission Budget</label>
+      <input type="text" class="form-control col-2" id="exampleInputEmail1" placeholder="0$">
+    </div>
+
+
+  </div>
 
 
 
@@ -110,27 +124,22 @@
 
 
 <div class="form-group">
-    <label for="exampleInputEmail1">Mission keywords (optional)</label>
-    <tag-input [ngModel]="items" (onAdd)="onItemAdded($event)">
+  <label for="exampleInputEmail1">Mission keywords (optional)</label>
+  <tag-input [ngModel]="items" (onAdd)="onItemAdded($event)">
 
-      <tag-input-dropdown [autocompleteItems]="items" [showDropdownIfEmpty]="true" [dynamicUpdate]="false">
-      </tag-input-dropdown>
-    </tag-input>
-  </div>
+    <tag-input-dropdown [autocompleteItems]="items" [showDropdownIfEmpty]="true" [dynamicUpdate]="false">
+    </tag-input-dropdown>
+  </tag-input>
+</div>
 
 
 
-<button class="btn btn-primary" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" 
-(click)="onMissionCreated()">Publish
+<button class="btn btn-primary" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" (click)="onMissionCreated()">Publish
   Mission
 </button>
 
 
 <!-- <button type="submit" class="btn btn-primary">Publish Mission</button> -->
-<button 
-(click)="onMissionSaved()" 
-[ngClass]="{'disabled' : missionForm.invalid }" 
-[disabled]="missionForm.invalid" 
-type="submit"
- class="btn btn-primary ml-5">
+<button (click)="onMissionSaved()" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" type="submit"
+  class="btn btn-primary ml-5">
   Save without publish</button>

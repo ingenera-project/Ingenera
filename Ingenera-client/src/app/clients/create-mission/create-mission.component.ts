@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { MissionService } from '../services'
 import { Authervice } from '../../authorization/auth.service'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-create-mission',
@@ -36,12 +37,11 @@ export class CreateMissionComponent implements OnInit {
 
 
   ngOnInit() {
-
-
     this.missionForm = this.fb.group({
       title: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
-      description: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
+      description: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
+      missionDates: ['', Validators.compose([Validators.required])],
     });
 
   }
@@ -90,8 +90,15 @@ export class CreateMissionComponent implements OnInit {
   }
 
   onMissionSaved() {
+    let startDate = moment(this.missionForm.value.missionDates[0]).format('DD-MM-YYYY'),
+      endDate = moment(this.missionForm.value.missionDates[1]).format('DD-MM-YYYY')
+    var diffDays = moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'days');
+    var days = diffDays
     let newMission = {
       ...this.missionForm.value,
+      startDate,
+      endDate,
+      duration: days,
       phase: this.phase,
       serviceLocation: this.serviceLocation,
       experience: this.experience,
