@@ -25,6 +25,44 @@ export class CreateMissionComponent implements OnInit {
   error: string;
   public keywords = [];
 
+  sections = [
+    {
+      title: 'NTIC', section: [
+        { id: 1, name: 'CONCEPTION ELECTRONIQUE' },
+        { id: 2, name: 'INFORMATIQUE' },
+        { id: 3, name: 'SYSTEMES EMBARQUES' },
+        { id: 4, name: 'MECATRONIQUE' },
+        { id: 5, name: 'REALITE VIRTUELLE & AUGMENTEE' },
+        { id: 6, name: 'CYBERSECURITE' },
+      ]
+    },
+    {
+      title: 'DATA SCIENCES', section: [
+        { id: 1, name: 'IA & ALGORITHME' },
+        { id: 2, name: 'BUSINESS INTELLIGENCE' },
+        { id: 3, name: 'BIG DATA' },
+
+      ]
+    },
+    {
+      title: 'TRANSPORT & MOBILITE', section: [
+        { id: 1, name: 'AUTOMOBILE' },
+        { id: 2, name: 'FERROVIAIRE' },
+        { id: 3, name: 'AERONAUTIQUE' },
+        { id: 4, name: 'NAVAL' },
+      ]
+    },
+    {
+      title: 'MANUFACTURING', section: [
+        { id: 1, name: 'R&D' },
+        { id: 2, name: 'PRODUCTION' },
+        { id: 3, name: 'LOGISTIQUE' },
+        { id: 4, name: 'QUALITE' },
+        { id: 5, name: 'ACHATS' },
+      ]
+    }
+  ]
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -113,7 +151,7 @@ export class CreateMissionComponent implements OnInit {
       status: 0,
       userId: this._Auth.getUser().id
     };
-    console.log('newMission',newMission)
+    console.log('newMission', newMission)
     this.missionSVC.create(newMission)
       .then(({ data }) => {
         console.log(data)
