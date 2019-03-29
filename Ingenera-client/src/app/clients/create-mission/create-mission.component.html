@@ -38,8 +38,8 @@
 
     <div class="form-group">
       <label for="exampleInpmissionDateutEmail1">Mission Dates</label>
-      <input formControlName="missionDates" type="text" id='missionDate' placeholder="Daterangepicker" class="form-control" bsDaterangepicker 
-      [bsConfig]="{rangeInputFormat: 'DD-MM-YYYY',containerClass: 'theme-blue'}">
+      <input formControlName="missionDates" type="text" id='missionDate' placeholder="Daterangepicker" class="form-control" bsDaterangepicker
+        [bsConfig]="{rangeInputFormat: 'DD-MM-YYYY',containerClass: 'theme-blue'}">
     </div>
 
     <div class="form-group">
@@ -131,8 +131,29 @@
     </tag-input-dropdown>
   </tag-input>
 </div>
+<h3>
+  Select your mission setures :
+</h3>
+<div class="row pb-5 pt-5">
+  <div class="list-group col-md-3">
+    <app-mission-sector [SectionTitle]="sections[0].title" [sections]="sections[0].section">
+    </app-mission-sector>
+  </div>
+  <div class="list-group col-md-3">
+    <app-mission-sector [SectionTitle]="sections[1].title" [sections]="sections[1].section">
+    </app-mission-sector>
+  </div>
+  <div class="list-group col-md-3">
+    <app-mission-sector [SectionTitle]="sections[2].title" [sections]="sections[2].section">
+    </app-mission-sector>
+  </div>
+  <div class="list-group col-md-3">
+    <app-mission-sector [SectionTitle]="sections[3].title" [sections]="sections[3].section">
+      </app-mission-sector>
+  </div>
 
 
+</div>
 
 <button class="btn btn-primary" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" (click)="onMissionCreated()">Publish
   Mission
