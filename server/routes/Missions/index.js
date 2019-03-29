@@ -9,6 +9,7 @@ const addMission = require('./add-mission');
 const updateMission = require('./edit-mission');
 const publishMission = require('./publish-missions')
 const clientMissions = require('./client-missions')
+const missionById = require('./Mission-by-id')
 /*
     Routes
 */
@@ -16,6 +17,7 @@ const clientMissions = require('./client-missions')
 router.post('/create', addMission);
 router.post('/update', updateMission);
 router.get('/publish', publishMission);
+router.get('misisonById/:missionId', missionById);
 router.get('/client/:userId/status/:statusId', clientMissions);
 
 
