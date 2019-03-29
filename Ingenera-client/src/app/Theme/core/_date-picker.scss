@@ -1,0 +1,13 @@
+ .bs-datepicker-head {
+    background-color: 'red'
+}
+
+ .bs-datepicker-body table td span.selected,
+ .bs-datepicker-body table td.selected span,
+ .bs-datepicker-body table td span[class*='select-']:after,
+ .bs-datepicker-body table td[class*='select-'] span:after {
+    background-color: 'red'
+}
+
+ .bs-datepicker-body table td.week span {
+    background-color: 'red'}

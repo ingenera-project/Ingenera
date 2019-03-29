@@ -11,6 +11,8 @@ import { SharedModule } from '../shared/shared.module'
 import { MissionService } from './services'
 import { TagInputModule } from 'ngx-chips';
 import { Authervice } from '../authorization/auth.service'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 @NgModule({
   declarations: [ClientContainerComponent, ClientDasboardComponent, ClientRequestsComponent, ClientProfileComponent, CreateMissionComponent],
   imports: [
@@ -18,7 +20,8 @@ import { Authervice } from '../authorization/auth.service'
     CommonModule,
     RouterModule,
     SharedModule,
-    TagInputModule
+    TagInputModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [MissionService,Authervice]
 })

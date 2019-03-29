@@ -15,8 +15,11 @@ let missionsSchema = new Schema({
     }],
     userId: { type: String },
     budget: { type: Number },
-    isDeleted: { type: Number } // 0 or 1
+    isDeleted: { type: Number }, // 0 or 1
     // pinding: { type: Number }
+    startDate:{ type: String },
+    endDate:{ type: String },
+    duration:{ type: String }
 })
 
 
