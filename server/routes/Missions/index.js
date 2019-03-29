@@ -8,7 +8,7 @@ const router = express.Router();
 const addMission = require('./add-mission');
 const updateMission = require('./edit-mission');
 const publishMission = require('./publish-missions')
-const saveWithoutPublish = require('./save-without-publish')
+const clientMissions = require('./client-missions')
 /*
     Routes
 */
@@ -16,7 +16,7 @@ const saveWithoutPublish = require('./save-without-publish')
 router.post('/create', addMission);
 router.post('/update', updateMission);
 router.get('/publish', publishMission);
-router.get('/saveWithoutPublish/:userId', saveWithoutPublish);
+router.get('/client/:userId/status/:statusId', clientMissions);
 
 
 
