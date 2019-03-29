@@ -10,7 +10,7 @@ import { ClientsRoutingModule } from './clients-routing.module'
 import { SharedModule } from '../shared/shared.module'
 import { MissionService } from './services'
 import { TagInputModule } from 'ngx-chips';
-
+import { Authervice } from '../authorization/auth.service'
 @NgModule({
   declarations: [ClientContainerComponent, ClientDasboardComponent, ClientRequestsComponent, ClientProfileComponent, CreateMissionComponent],
   imports: [
@@ -20,6 +20,6 @@ import { TagInputModule } from 'ngx-chips';
     SharedModule,
     TagInputModule
   ],
-  providers: [MissionService]
+  providers: [MissionService,Authervice]
 })
 export class ClientsModule { }

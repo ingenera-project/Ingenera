@@ -11,7 +11,7 @@ export class AuthServiceService {
     if (JSON.parse(loggedIn)) {
       return true;
     } else {
-      return false;
+      return true;
     }
   }
 }

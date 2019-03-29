@@ -29,6 +29,7 @@ const { users } = require('../../../Database/usersSchema')
 // })
 
 module.exports = register = async (req, res) => {
+	console.log('lets connect with db register')
 	const { firstName, email, lastName, password, role } = req.body;
 	// console.log(firstName, email, password,lastName, acceptTerms, role)
 	users.find({ email: email }, (err, data) => {
