@@ -7,6 +7,7 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { MissionService } from '../services'
+import { Authervice } from '../../authorization/auth.service'
 
 @Component({
   selector: 'app-create-mission',
@@ -27,17 +28,22 @@ export class CreateMissionComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private missionSVC: MissionService,
-    public toast: ToastService
-  ) { }
+    public toast: ToastService,
+    public _Auth: Authervice
+  ) {
+  }
 
 
 
   ngOnInit() {
+
+
     this.missionForm = this.fb.group({
       title: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       description: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
     });
+
   }
 
   onItemAdded(e) {
@@ -69,7 +75,8 @@ export class CreateMissionComponent implements OnInit {
       serviceLocation: this.serviceLocation,
       experience: this.experience,
       keywords: this.keywords,
-      status: 1
+      status: 1,
+      userId: this._Auth.getUser().id
     }
     this.missionSVC.create(newMission)
       .then(({ data }) => {
@@ -89,11 +96,13 @@ export class CreateMissionComponent implements OnInit {
       serviceLocation: this.serviceLocation,
       experience: this.experience,
       keywords: this.keywords,
-      status: 0
+      status: 0,
+      userId: this._Auth.getUser().id
     };
     this.missionSVC.create(newMission)
       .then(({ data }) => {
         console.log(data)
+
         this.toast.presentToast(data.message);
         this.missionForm.reset()
       })

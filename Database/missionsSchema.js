@@ -13,6 +13,7 @@ let missionsSchema = new Schema({
     keywords: [{
         type: Object
     }],
+    userId: { type: String },
     budget: { type: Number },
     isDeleted: { type: Number } // 0 or 1
     // pinding: { type: Number }

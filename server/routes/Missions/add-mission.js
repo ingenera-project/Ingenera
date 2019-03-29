@@ -2,7 +2,8 @@ const { Missions } = require('../../../Database/missionsSchema');
 
 
 module.exports = addMisstion = (req, res) => {
-    let mission = new Missions({ ...req.body });
+    console.log("check body ", req.body)
+    let mission = new Missions({ ...req.body, isDeleted:0 });
 
     mission.save((err, data) => {
         if (err) {
@@ -10,7 +11,7 @@ module.exports = addMisstion = (req, res) => {
             res.sendStatus(500);
             return;
         }
-        res.send({ message: "Your mission has been saved", status: 200, payload: data })
+        res.send({ message: "Your mission has been saved", status: 200})
         return;
     });
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import Axios from 'axios';
-
+import decode from 'jwt-decode';
 @Injectable()
 export class Authervice {
 
@@ -13,6 +13,7 @@ export class Authervice {
   }
 
   signup(user: object) {
+    console.log('lets signup')
     return Axios.post('api/auth/signup', user)
   }
 
@@ -22,6 +23,13 @@ export class Authervice {
 
   resetPassword(newPass: String, id: String) {
     return Axios.post('api/auth/reset', { newPass, id })
+  }
+
+  getUser() {
+    const token = localStorage.getItem('token');
+    const user = decode(token);
+    console.log("check user ",user)
+    return user
   }
 
 }

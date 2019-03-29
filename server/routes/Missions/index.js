@@ -16,7 +16,7 @@ const saveWithoutPublish = require('./save-without-publish')
 router.post('/create', addMission);
 router.post('/update', updateMission);
 router.get('/publish', publishMission);
-router.get('/saveWithoutPublish', saveWithoutPublish);
+router.get('/saveWithoutPublish/:userId', saveWithoutPublish);
 
 
 
