@@ -13,6 +13,6 @@ export class MissionService {
 
 
     getAll(statusId,userId) {
-        return axios.get(`api/mission/saveWithoutPublish/${userId}`)
+        return axios.get(`api/mission/client/${userId}/status/${statusId}`)
     }
 }
