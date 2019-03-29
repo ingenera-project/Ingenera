@@ -99,13 +99,13 @@ export class CreateMissionComponent implements OnInit {
   onMissionSaved() {
     let startDate = moment(this.missionForm.value.missionDates[0]).format('DD-MM-YYYY'),
       endDate = moment(this.missionForm.value.missionDates[1]).format('DD-MM-YYYY')
-    var diffDays = moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'days');
-    var days = diffDays
+    var diffMonth = moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'months');
+    var months = diffMonth
     let newMission = {
       ...this.missionForm.value,
       startDate,
       endDate,
-      duration: days,
+      duration: months,
       phase: this.phase,
       serviceLocation: this.serviceLocation,
       experience: this.experience,
@@ -113,6 +113,7 @@ export class CreateMissionComponent implements OnInit {
       status: 0,
       userId: this._Auth.getUser().id
     };
+    console.log('newMission',newMission)
     this.missionSVC.create(newMission)
       .then(({ data }) => {
         console.log(data)
