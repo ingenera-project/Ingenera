@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild,    ElementRef
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../../toast.service';
 import {
@@ -24,44 +25,7 @@ export class CreateMissionComponent implements OnInit {
   missionForm: FormGroup;
   error: string;
   public keywords = [];
-
-  sections = [
-    {
-      title: 'NTIC', section: [
-        { id: 1, name: 'CONCEPTION ELECTRONIQUE' },
-        { id: 2, name: 'INFORMATIQUE' },
-        { id: 3, name: 'SYSTEMES EMBARQUES' },
-        { id: 4, name: 'MECATRONIQUE' },
-        { id: 5, name: 'REALITE VIRTUELLE & AUGMENTEE' },
-        { id: 6, name: 'CYBERSECURITE' },
-      ]
-    },
-    {
-      title: 'DATA SCIENCES', section: [
-        { id: 1, name: 'IA & ALGORITHME' },
-        { id: 2, name: 'BUSINESS INTELLIGENCE' },
-        { id: 3, name: 'BIG DATA' },
-
-      ]
-    },
-    {
-      title: 'TRANSPORT & MOBILITE', section: [
-        { id: 1, name: 'AUTOMOBILE' },
-        { id: 2, name: 'FERROVIAIRE' },
-        { id: 3, name: 'AERONAUTIQUE' },
-        { id: 4, name: 'NAVAL' },
-      ]
-    },
-    {
-      title: 'MANUFACTURING', section: [
-        { id: 1, name: 'R&D' },
-        { id: 2, name: 'PRODUCTION' },
-        { id: 3, name: 'LOGISTIQUE' },
-        { id: 4, name: 'QUALITE' },
-        { id: 5, name: 'ACHATS' },
-      ]
-    }
-  ]
+sectors:any
 
   constructor(
     private router: Router,
@@ -72,7 +36,8 @@ export class CreateMissionComponent implements OnInit {
   ) {
   }
 
-
+  ngAfterViewInit() {
+  }
 
   ngOnInit() {
     this.missionForm = this.fb.group({
@@ -135,6 +100,7 @@ export class CreateMissionComponent implements OnInit {
   }
 
   onMissionSaved() {
+
     let startDate = moment(this.missionForm.value.missionDates[0]).format('DD-MM-YYYY'),
       endDate = moment(this.missionForm.value.missionDates[1]).format('DD-MM-YYYY')
     var diffMonth = moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'months');

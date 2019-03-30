@@ -1,0 +1,17 @@
+.sectionTilte{
+    color: #fff;
+    min-height: 75px;
+}
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #416796;
+    border-color: #babcbd;
+}
+.activeSection{
+    background-color: #a2d3ff;
+    color: #fff !important;
+    &:hover{
+        background-color: #a2d3ff;
+    }
+}
