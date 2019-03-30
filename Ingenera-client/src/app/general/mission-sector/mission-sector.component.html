@@ -1,0 +1,16 @@
+<div class="row pt-1 pb-5">
+  <div *ngFor="let item of sections let i=index" class="list-group col-md-2 mt-2">
+      <span class="list-group-item list-group-item-action active sectionTilte">
+        {{item.title}}
+      </span>
+      <div *ngFor="let section of item.section let i=index">
+        <a 
+        class="list-group-item list-group-item-action pointer font-14" 
+        [ngClass]="{'activeSection':selectedSections[section.id]==true}"
+        (click)="selectSection(section)">
+          {{section.name}}
+        </a>
+      </div>
+  </div>
+</div>
+
