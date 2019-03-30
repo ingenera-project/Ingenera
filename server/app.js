@@ -30,4 +30,5 @@ app.use((err, req, res, next) => {
 app.get('/*', (req, res) => {
 	res.sendFile(path.resolve(path.join(__dirname, '../Ingenera-client/dist/Ingenera-client/index.html')));
 });
+
 module.exports = app;

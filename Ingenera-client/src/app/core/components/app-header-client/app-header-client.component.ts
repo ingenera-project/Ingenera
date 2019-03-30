@@ -13,7 +13,8 @@ export class AppHeaderClientComponent implements OnInit {
     }
 
     ngOnInit() {
-   
+
+
     }
 
     logout() {

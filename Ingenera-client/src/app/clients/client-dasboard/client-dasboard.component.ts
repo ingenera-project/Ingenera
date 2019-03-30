@@ -9,20 +9,32 @@ import { Authervice } from '../../authorization/auth.service'
   styleUrls: ['./client-dasboard.component.scss']
 })
 export class ClientDasboardComponent implements OnInit {
-  activeStatus = '0'
-  constructor(private router: Router, private missionSVC: MissionService,
-  private _Auth:Authervice) { }
-
+  activeStatus = '3' //all
+  missions: any
+  constructor(
+    private router: Router,
+    private missionSVC: MissionService,
+    private _Auth: Authervice
+  ) {
+  }
   ngOnInit() {
   }
-
   goToMission() {
     this.router.navigate(['client/newMission'])
   }
   getMissions(missionStatusID) {
-    const userId =this._Auth.getUser().id
+    const userId = this._Auth.getUser().id
     this.activeStatus = missionStatusID
-    this.missionSVC.getAll(missionStatusID,userId)
+    this.missionSVC.getMissionsByStatus(missionStatusID, userId)
+      .then(({ data }) => {
+        this.missions = data
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+  onMissionSelected(mission) {
+    console.log(mission)
   }
 
 }

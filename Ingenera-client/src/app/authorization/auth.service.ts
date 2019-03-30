@@ -28,7 +28,6 @@ export class Authervice {
   getUser() {
     const token = localStorage.getItem('token');
     const user = decode(token);
-    console.log("check user ",user)
     return user
   }
 

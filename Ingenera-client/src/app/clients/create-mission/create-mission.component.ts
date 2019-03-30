@@ -1,4 +1,5 @@
-import { Component, OnInit ,ViewChild,    ElementRef
+import {
+  Component, OnInit, ViewChild, ElementRef
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../../toast.service';
@@ -25,7 +26,7 @@ export class CreateMissionComponent implements OnInit {
   missionForm: FormGroup;
   error: string;
   public keywords = [];
-sectors:any
+  sectors: any
 
   constructor(
     private router: Router,
@@ -45,6 +46,7 @@ sectors:any
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       description: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       missionDates: ['', Validators.compose([Validators.required])],
+      budget:['']
     });
 
   }
@@ -59,19 +61,15 @@ sectors:any
   }
 
   onPhaseSelected(phaseId) {
-
     this.phase = phaseId
   }
   onLocationSelected(locationId) {
-
     this.serviceLocation = locationId
-
   }
   onExperianceSelected(yearsRangeId) {
     this.experience = yearsRangeId
   }
-
-  onMissionCreated() {
+  onMissionCreated(statusID) {
     let startDate = moment(this.missionForm.value.missionDates[0]).format('DD-MM-YYYY'),
       endDate = moment(this.missionForm.value.missionDates[1]).format('DD-MM-YYYY')
     var diffDays = moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'days');
@@ -85,7 +83,7 @@ sectors:any
       serviceLocation: this.serviceLocation,
       experience: this.experience,
       keywords: this.keywords,
-      status: 1,
+      status: statusID, // {0: "save without puplish" , 1:"save and publish"}
       userId: this._Auth.getUser().id
     }
     this.missionSVC.create(newMission)
@@ -98,43 +96,8 @@ sectors:any
         console.log(err)
       })
   }
-
-  onMissionSaved() {
-
-    let startDate = moment(this.missionForm.value.missionDates[0]).format('DD-MM-YYYY'),
-      endDate = moment(this.missionForm.value.missionDates[1]).format('DD-MM-YYYY')
-    var diffMonth = moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'months');
-    var months = diffMonth
-    let newMission = {
-      ...this.missionForm.value,
-      startDate,
-      endDate,
-      duration: months,
-      phase: this.phase,
-      serviceLocation: this.serviceLocation,
-      experience: this.experience,
-      keywords: this.keywords,
-      status: 0,
-      userId: this._Auth.getUser().id
-    };
-    console.log('newMission', newMission)
-    this.missionSVC.create(newMission)
-      .then(({ data }) => {
-        console.log(data)
-
-        this.toast.presentToast(data.message);
-        this.missionForm.reset()
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
-
-
   private onTouchedCallback() {
-
   }
   private onChangeCallback() {
-
   }
 }
