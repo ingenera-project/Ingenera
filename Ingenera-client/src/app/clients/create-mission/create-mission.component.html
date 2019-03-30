@@ -34,7 +34,7 @@
 
 
 
-  <div class="col-md-6">
+  <div class="col-md-6 missionForm">
 
     <div class="form-group">
       <label for="exampleInpmissionDateutEmail1">Mission Dates</label>
@@ -85,9 +85,9 @@
       <label for="exampleInputEmail1">Service Location</label>
 
       <div class="input-group-prepend">
-        <button (click)="onLocationSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':location=='0'}"
+        <button (click)="onLocationSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':serviceLocation=='0'}"
           type="button">Service Provider</button>
-        <button (click)="onLocationSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':location=='1'}"
+        <button (click)="onLocationSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':serviceLocation=='1'}"
           type="button">SUR</button>
       </div>
     </div>
@@ -96,22 +96,28 @@
     <div class="form-group">
       <label for="exampleInputEmail1">Years of experiance</label>
       <div class="input-group-prepend">
-        <button (click)="onExperianceSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='0'}"
+        <button (click)="onExperianceSelected(0)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':experience=='0'}"
           type="button">0 - 2</button>
-        <button (click)="onExperianceSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='1'}"
+        <button (click)="onExperianceSelected(1)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':experience=='1'}"
           type="button">2 - 5</button>
-        <button (click)="onExperianceSelected(2)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='2'}"
+        <button (click)="onExperianceSelected(2)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':experience=='2'}"
           type="button">5 - 10</button>
-        <button (click)="onExperianceSelected(3)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':expYears=='3'}"
+        <button (click)="onExperianceSelected(3)" class="btn btn-outline-secondary btn-option" [ngClass]="{'active':experience=='3'}"
           type="button"> > 10 </button>
       </div>
     </div>
 
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Mission Budget</label>
-      <input type="text" class="form-control col-2" id="exampleInputEmail1" placeholder="0$">
+      <label for="missionBudget">Budget</label>
+      <div class="md-form input-group">
+        <input type="number" class="form-control col-md-3" id="missionBudget" placeholder="00.0" formControlName="budget">
+        <div class="input-group-append">
+          <span class="input-group-text md-addon bg-light">€</span>
+        </div>
+      </div>
     </div>
+
 
 
   </div>
@@ -134,15 +140,14 @@
 <h3>
   Select your mission setures :
 </h3>
-    <app-mission-sector>
-    </app-mission-sector>
+<app-mission-sector></app-mission-sector>
 
-<button class="btn btn-primary" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" (click)="onMissionCreated()">Publish
+<button class="btn btn-primary" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" (click)="onMissionCreated(1)">Publish
   Mission
 </button>
 
 
 <!-- <button type="submit" class="btn btn-primary">Publish Mission</button> -->
-<button (click)="onMissionSaved()" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" type="submit"
+<button (click)="onMissionCreated(0)" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" type="submit"
   class="btn btn-primary ml-5">
   Save without publish</button>

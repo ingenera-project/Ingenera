@@ -3,7 +3,7 @@
 
   <div class="row client-cards">
     <div class="col-md-3">
-      <div class="card p-4" [ngClass]="{'active-card':activeStatus=='3'}" (click)="getMissions(1)">All</div>
+      <div class="card p-4" [ngClass]="{'active-card':activeStatus=='3'}" (click)="getMissions(3)">All</div>
     </div>
     <div class="col-md-3">
       <div class="card p-4" [ngClass]="{'active-card':activeStatus=='1'}" (click)="getMissions(1)">Open</div>
@@ -19,8 +19,31 @@
     </div> -->
   </div>
 
-  <div class="p-5">
-    You have no missions yet
+
+  <table class="row table table-hover m-4">
+  <tbody style="width: 85%;">
+      <tr style="background-color: #dee2e6">
+        <th  class="col-md-3">MissionTitle</th>
+        <!-- <th scope="col">StartDate</th>
+          <th scope="col">EndDate</th> -->
+        <th  class="col-md-3">phase</th>
+        <th  class="col-md-3">address</th>
+        <th  class="col-md-3">status</th>
+      </tr>
+   <span  *ngIf="missions">
+      <tr *ngFor="let mission of missions " class="pointer"
+      (click)="onMissionSelected(mission)">
+        <td class="col-md-3">{{mission.title}}</td>
+        <!-- <td>{{mission.StartDate}}</td>
+            <td>{{mission.titEndDatele}}</td> -->
+        <td class="col-md-3">{{mission.phase}}</td>
+        <td class="col-md-3">{{mission.address}}</td>
+        <td class="col-md-3">{{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</td>
+      </tr></span>
+</tbody>
+</table>
+
+    <!-- <div class="p-5">
     <button class="btn btn-info" (click)="goToMission()"> Create Mission </button>
-  </div>
+  </div> -->
 </div>

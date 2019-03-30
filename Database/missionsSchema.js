@@ -19,7 +19,7 @@ let missionsSchema = new Schema({
     // pinding: { type: Number }
     startDate:{ type: String },
     endDate:{ type: String },
-    duration:{ type: String }
+    duration:{ type: String },
 })
 
 

@@ -12,7 +12,7 @@ export class MissionService {
     }
 
 
-    getAll(statusId,userId) {
+    getMissionsByStatus(statusId,userId) {
         return axios.get(`api/mission/client/${userId}/status/${statusId}`)
     }
 }
