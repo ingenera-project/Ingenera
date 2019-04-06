@@ -1,10 +1,10 @@
 const { Missions } = require('../../../Database/missionsSchema');
 const { EditAndValidate } = require('../../Helper/utility')
 
-module.exports = updateMission = async (req, res) => {
+module.exports = updateMission =  (req, res) => {
     let { body } = req;
     let bodyKeys = Object.keys(body);
-    let updateMission = await EditAndValidate(body, bodyKeys)
+    let updateMission =  EditAndValidate(body, bodyKeys)
     if (Object.keys(updateMission).length) {
         Missions.findOneAndUpdate({ _id: body.id }, { $set: updateMission }, (err, data) => {
             if (err) {
@@ -17,7 +17,7 @@ module.exports = updateMission = async (req, res) => {
             }
         });
     } else {
-        res.send({ message: "Nothing updated, because there's no content", status: 204 })
+        res.send({ message: "Nothing updated, because there's no content", status: 204 }).status(204)
         return;
     }
 }

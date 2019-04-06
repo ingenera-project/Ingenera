@@ -1,6 +1,6 @@
 const { Missions } = require('../../../Database/missionsSchema');
 
-module.exports = saveWithoutPublish = (req, res) => {
+module.exports = getPublishOrSaveMissions = (req, res) => {
     const { userId, statusId } = req.params
     console.log('check user id ', userId, statusId)
     Missions.find({ userId: userId, status: statusId, isDeleted: 0 }, (err, data) => {
