@@ -8,10 +8,11 @@ export class AuthServiceService {
 
   public isLoggedIn(): boolean {
     const loggedIn = localStorage.getItem('loggedIn');
-    if (JSON.parse(loggedIn)) {
+    if (!!JSON.parse(loggedIn)) {
+      console.log("lmaooo")
       return true;
     } else {
-      return true;
+      return false;
     }
   }
 }
