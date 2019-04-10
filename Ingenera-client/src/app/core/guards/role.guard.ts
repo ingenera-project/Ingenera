@@ -13,7 +13,6 @@ export class RoleGuardService implements CanActivate {
     }
     canActivate(route: ActivatedRouteSnapshot): boolean {
         if (!this.auth.isLoggedIn()) {
-            console.log("jackel is here")
             localStorage.setItem("loggedIn", 'false')
             this.router.navigate(['auth']);
             return false;
