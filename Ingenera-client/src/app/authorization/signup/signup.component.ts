@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
 
   onRegister() {
     if (this.registerForm.valid) {
-      let user = { ...this.registerForm.value, role: this.role }
+      let user = { ...this.registerForm.value, role: this.role ? this.role : "bm" }
       return this._auth.signup(user)
         .then(({ data }) => {
           if (data.status === 409) {
