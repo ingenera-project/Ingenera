@@ -11,3 +11,76 @@ cursor: pointer;
     background-color: #eee
 }
 }
+
+.missions-list-field {
+    width: 25%;
+}
+
+.missions-lists {
+    background-color: #FFF;
+    min-height: 200px;
+    padding-bottom: 30px;
+    li {
+        cursor: pointer;
+        padding: 0;
+        &.missions-list-header {
+            //  @include border-top-radius(0.5rem);
+            color:#416796;
+            font-weight: bold;
+            text-align: center;
+            .missions-list-field {
+                padding: 0.75rem 1rem;
+                &.active {
+                    border-color: #d6d6d6;
+                    background-color: #f0f0f0
+                }
+            }
+        }
+        &.permission-list-item {
+            text-align: center;
+            &:hover {
+                background-color: #f0f0f0
+            }
+        }
+        .missions-list-field {
+            &.active {
+                border-color: #d6d6d6;
+                background-color: #f0f0f0
+            }
+            padding: 0.5rem 1rem;
+            border-right: 1px solid rgba(0, 0, 0, 0.125);
+            span.icon-stack {
+                color: rgba(0, 0, 0, 0.125);
+                i {
+                    position: absolute;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.mobile {
+    .mobile-header {
+        font-size: 12px;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        .missions-list-field {
+            width: 33.3%;
+        }
+    }
+    ul {
+        background-color: transparent;
+        .missions-list-field {
+            width: 50%;
+        }
+        .list-mobile {
+      
+            .row-2 {
+                border-bottom-left-radius: 0.5rem;
+                border-bottom-right-radius: 0.5rem;
+            }
+        }
+    }
+}
