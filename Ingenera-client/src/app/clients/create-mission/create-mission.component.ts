@@ -26,7 +26,8 @@ export class CreateMissionComponent implements OnInit {
   missionForm: FormGroup;
   error: string;
   public keywords = [];
-  sectors: any
+  sectors: any;
+  missionSectors: []
 
   constructor(
     private router: Router,
@@ -46,7 +47,7 @@ export class CreateMissionComponent implements OnInit {
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       description: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       missionDates: ['', Validators.compose([Validators.required])],
-      budget:['']
+      budget: ['']
     });
 
   }
@@ -69,6 +70,14 @@ export class CreateMissionComponent implements OnInit {
   onExperianceSelected(yearsRangeId) {
     this.experience = yearsRangeId
   }
+  onSectionsSelected(sectionsList) {
+    console.log(sectionsList)
+    this.missionSectors = sectionsList
+  }
+  filterSection() {
+    let x = this.missionSectors.filter(e => e['active'] == true)
+    return x
+  }
   onMissionCreated(statusID) {
     let startDate = moment(this.missionForm.value.missionDates[0]).format('DD-MM-YYYY'),
       endDate = moment(this.missionForm.value.missionDates[1]).format('DD-MM-YYYY')
@@ -84,7 +93,8 @@ export class CreateMissionComponent implements OnInit {
       experience: this.experience,
       keywords: this.keywords,
       status: statusID, // {0: "save without puplish" , 1:"save and publish"}
-      userId: this._Auth.getUser().id
+      userId: this._Auth.getUser().id,
+      sections:this.filterSection()
     }
     this.missionSVC.create(newMission)
       .then(({ data }) => {
