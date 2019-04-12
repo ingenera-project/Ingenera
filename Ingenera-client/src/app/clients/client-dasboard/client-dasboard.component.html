@@ -20,30 +20,152 @@
   </div>
 
 
-  <table class="row table table-hover m-4">
-  <tbody style="width: 85%;">
-      <tr style="background-color: #dee2e6">
-        <th  class="col-md-3">MissionTitle</th>
-        <!-- <th scope="col">StartDate</th>
-          <th scope="col">EndDate</th> -->
-        <th  class="col-md-3">phase</th>
-        <th  class="col-md-3">address</th>
-        <th  class="col-md-3">status</th>
-      </tr>
-   <span  *ngIf="missions">
-      <tr *ngFor="let mission of missions " class="pointer"
-      (click)="onMissionSelected(mission)">
-        <td class="col-md-3">{{mission.title}}</td>
-        <!-- <td>{{mission.StartDate}}</td>
-            <td>{{mission.titEndDatele}}</td> -->
-        <td class="col-md-3">{{mission.phase}}</td>
-        <td class="col-md-3">{{mission.address}}</td>
-        <td class="col-md-3">{{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</td>
-      </tr></span>
-</tbody>
-</table>
-
     <!-- <div class="p-5">
     <button class="btn btn-info" (click)="goToMission()"> Create Mission </button>
   </div> -->
+
+
+
+
+
+  <div class="mt-5">
+
+<!-- 
+    <div class="search mb-3">
+        <div class="row text-gray">
+            <div class="col-md-12 keyword-box mb-2">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="textInput" #keywordInput type="text" class="form-control pl-5" placeholder="type a keyword" aria-describedby="basic-addon1"
+                    name="keyword">
+            </div>
+        </div>
+    </div> -->
+
+    <!-- desktop view-->
+    <div class="mission-table  d-none d-md-block d-lg-block d-xl-block">
+        <ul class="list-group missions-lists text-center">
+            <!-- header -->
+            <li class="d-flex flex-row align-items-start missions-list-header list-group-item header-desktop">
+
+
+                <!--id-->
+                <div class="missions-list-field">
+                    <span class="field-header-text">title</span>
+                </div>
+                <!--code-->
+                <div class="missions-list-field">
+                    <span class="field-header-text">Status</span>
+                </div>
+                <!--DESCRIPTION-->
+                <div class="missions-list-field">
+                    <span class="field-header-text">address</span>
+                </div>
+                <!--TYPE-->
+                <div class="missions-list-field">
+                    <span class="field-header-text">TYPE</span>
+                </div>
+
+            </li>
+
+
+            <span>
+                <span *ngFor="let mission of missions">
+
+                    <li class="d-flex flex-row permission-list-item list-group-item text-gray list-desktop text-center">
+
+                        <div class="missions-list-field">
+                            <span>{{mission.title}}</span>
+                        </div>
+
+                        <div class="missions-list-field">
+                            <span>{{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</span>
+                        </div>
+
+                        <div class="missions-list-field ">
+                            <span>{{mission.address}}</span>
+                        </div>
+                        <div class="missions-list-field ">
+                            <span></span>
+                        </div>
+                    </li>
+                </span>
+
+            </span>
+
+        </ul>
+<!-- 
+        <div class="text-center mt-3">
+            <div class="text-center mt-3">
+                <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+            </div>
+        </div> -->
+
+    </div>
+
+  <!-- mobileview-->
+  <div class="projects-table mobile">
+    <ul class="list-group missions-lists d-md-none d-lg-none d-xl-none">
+        <!-- header -->
+
+        <li class="mobile-header d-flex flex-row  list-group-item text-center  text-primary">
+
+
+            <!--ID-->
+            <div class="missions-list-field  project-name-header">
+                <span class="field-header-text">title</span>
+            </div>
+
+            <!--CODE-->
+            <div class="missions-list-field  permission-header pl-1">
+                <span class="field-header-text">Status</span>
+            </div>
+
+            <!--DESCRIPTION-->
+            <div class="missions-list-field  permission-desc">
+                <span class="field-header-text">Address</span>
+            </div>
+
+            <!--TYPE-->
+            <div class="missions-list-field  permission-desc">
+                <span class="field-header-text">TYPE</span>
+            </div>
+
+        </li>
+
+
+        <span>
+            <span *ngFor="let mission of missions ;">
+                <span class="list-mobile  d-md-none d-lg-none d-xl-none text-gray">
+                    <li class="row-1 d-flex flex-row  list-group-item mt-3 ">
+
+                        <div class="missions-list-field col-Id">
+                            <span>
+                                {{mission.title}}</span>
+                        </div>
+
+                        <div class="missions-list-field col-code">
+                            <span>
+                              {{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</span>
+                        </div>
+
+
+                    </li>
+                    <li class="row-2 d-flex flex-row  list-group-item ">
+
+                        <div class="missions-list-field col-desc">
+                            <span>
+                               {{mission.address}}</span>
+                        </div>
+                    
+                    </li>
+                </span>
+            </span>
+        </span>
+
+    </ul>
+</div>
+
+
+</div>
+
 </div>
