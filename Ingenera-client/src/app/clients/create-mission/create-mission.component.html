@@ -140,7 +140,7 @@
 <h3>
   Select your mission setures :
 </h3>
-<app-mission-sector></app-mission-sector>
+<app-mission-sector  (sellectedSectors)="onSectionsSelected($event)"></app-mission-sector>
 
 <button class="btn btn-primary" [ngClass]="{'disabled' : missionForm.invalid }" [disabled]="missionForm.invalid" (click)="onMissionCreated(1)">Publish
   Mission
