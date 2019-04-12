@@ -13,8 +13,9 @@ import { TagInputModule } from 'ngx-chips';
 import { Authervice } from '../authorization/auth.service'
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { MissionSectorComponent } from '../general/mission-sector/mission-sector.component';
+import { MissionDetailsComponent } from './mission-details/mission-details.component';
 @NgModule({
-  declarations: [ClientContainerComponent, ClientDasboardComponent, ClientRequestsComponent, ClientProfileComponent, CreateMissionComponent, MissionSectorComponent],
+  declarations: [ClientContainerComponent, ClientDasboardComponent, ClientRequestsComponent, ClientProfileComponent, CreateMissionComponent, MissionSectorComponent, MissionDetailsComponent],
   imports: [
     ClientsRoutingModule,
     CommonModule,
