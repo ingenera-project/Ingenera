@@ -34,7 +34,10 @@ export class ClientDasboardComponent implements OnInit {
       })
   }
   onMissionSelected(mission) {
-    console.log(mission)
+
+    console.log(mission._id)
+    this.router.navigate(['/client/mission', mission._id]);
+
   }
 
 }

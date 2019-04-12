@@ -15,4 +15,7 @@ export class MissionService {
     getMissionsByStatus(statusId,userId) {
         return axios.get(`api/mission/client/${userId}/status/${statusId}`)
     }
+    getMissionsById(missionId) {
+        return axios.get(`api/mission/misisonById/${missionId}`)
+    }
 }

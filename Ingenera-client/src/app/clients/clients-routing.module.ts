@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ClientDasboardComponent, ClientProfileComponent, ClientRequestsComponent, CreateMissionComponent } from '../clients'
+import { ClientDasboardComponent, ClientProfileComponent, ClientRequestsComponent, CreateMissionComponent, MissionDetailsComponent } from '../clients'
 
 
 const routes: Routes = [
@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'dashboard', component: ClientDasboardComponent },
   { path: 'profile', component: ClientProfileComponent },
   { path: 'requests', component: ClientRequestsComponent },
-  { path: 'newMission', component: CreateMissionComponent }
+  { path: 'newMission', component: CreateMissionComponent },
+  { path: 'mission/:id', component: MissionDetailsComponent }
 ]
 
 

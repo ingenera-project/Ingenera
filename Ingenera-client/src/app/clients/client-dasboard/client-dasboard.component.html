@@ -71,7 +71,8 @@
             <span>
                 <span *ngFor="let mission of missions">
 
-                    <li class="d-flex flex-row permission-list-item list-group-item text-gray list-desktop text-center">
+                    <li class="d-flex flex-row permission-list-item list-group-item text-gray list-desktop text-center"
+                    (click)="onMissionSelected(mission)">
 
                         <div class="missions-list-field">
                             <span>{{mission.title}}</span>
