@@ -11,22 +11,29 @@ import {
   styleUrls: ['./mission-details.component.scss']
 })
 export class MissionDetailsComponent implements OnInit {
-  missionId: number
+  missionId
+  missionData = {}
   constructor(
     private route: ActivatedRoute,
     private missionSVC: MissionService) {
     this.route.params.subscribe((params: Params) => {
       if (params['id']) {
-        this.missionId = +params['id'];
+        this.missionId = params['id'];
+        this.getMissionDetails()
       }
     });
   }
   ngOnInit() {
-    this.getMissionDetails()
+
   }
   getMissionDetails() {
-    this.missionSVC.getMissionsById(this.missionId).then(data => {
+    this.missionSVC.getMissionsById(this.missionId).then(({ data }) => {
       console.log('missionDetails: ', data)
+      this.missionData = data[0]
     })
+  }
+
+  onPublishMission(misionId) {
+
   }
 }

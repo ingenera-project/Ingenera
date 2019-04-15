@@ -13,11 +13,11 @@ const missionById = require('./Mission-by-id')
 /*
     Routes
 */
-
+console.log("ts test")
 router.post('/create', addMission);
 router.post('/update', updateMission);
 router.get('/publish', publishMission);
-router.get('misisonById/:missionId', missionById);
+router.get('/misisonById/:missionId', missionById);
 router.get('/client/:userId/status/:statusId', clientMissions);
 
 
