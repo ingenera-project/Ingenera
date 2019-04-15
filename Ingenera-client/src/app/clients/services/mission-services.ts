@@ -18,4 +18,9 @@ export class MissionService {
     getMissionsById(missionId) {
         return axios.get(`api/mission/misisonById/${missionId}`)
     }
+
+    updateMission(mission) {
+        return axios.post(`api/mission/update`,mission)
+    }
+
 }

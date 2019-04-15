@@ -45,7 +45,7 @@ export class CreateMissionComponent implements OnInit {
     this.missionForm = this.fb.group({
       title: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
-      description: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
+      description: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       missionDates: ['', Validators.compose([Validators.required])],
       budget: ['']
     });
