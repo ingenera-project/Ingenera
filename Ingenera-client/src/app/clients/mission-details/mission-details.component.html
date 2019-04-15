@@ -3,14 +3,34 @@
     <h4>
       {{missionData.title}}
     </h4>
-    <span>Start date : {{missionData.startDate}}</span>
   </div>
-  <div class="col-md-3" *ngIf="missionData.status==0">
-    <button class="btn btn-info" (click)="onPublishMission(missionData._id)">Publish mission</button>
+  <div class="col-md-3" *ngIf="isSaved">
+    <button class="btn btn-info" (click)="onPublishMission(missionData)">Publish mission</button>
+  </div>
+  <div class="col-md-3" *ngIf="!isSaved">
+    <h4 class="text-info">Published</h4>
   </div>
 
 </div>
 <hr/>
-<div class="col-md-6">
+
+<div class="row p-3">
+  <span *ngFor="let key of missionData.keywords; let i=index">
+    <span class="keywordText ml-1"> <span>{{key.value}}</span></span>
+  </span>
+
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-6">
   <p> {{missionData.description}}</p>
+</div>
+<div class="offset-md-2 col-md-4">
+  <h6>Start date : {{missionData.startDate}}</h6>
+  <h6>End date : {{missionData.endDate}}</h6>
+  <h6>address : {{missionData.address}}</h6>
+</div>
 </div>

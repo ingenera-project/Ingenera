@@ -2,17 +2,75 @@
   <h4>Client Dashboard</h4>
 
   <div class="row client-cards">
-    <div class="col-md-3">
-      <div class="card p-4" [ngClass]="{'active-card':activeStatus=='3'}" (click)="getMissions(3)">All</div>
+    
+
+    <!--total-->
+    <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="card stat" (click)="getMissions(3)" [ngClass]="{'active-card':activeStatus=='3'}">
+                <div class="card-body clearfix text-primary">
+                    <div class="mr-5 float-left status-chart">
+                    </div>
+                    <div class="float-left status-name">
+                        <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">All</h5>
+                    </div>
+                    <div class="text-primary font-4xl float-right font-weight-bold number">
+                        <span>10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+  <!--Open-->
+  <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="card stat" (click)="getMissions(1)" [ngClass]="{'active-card':activeStatus=='1'}">
+            <div class="card-body clearfix text-primary">
+                <div class="mr-5 float-left status-chart">
+                </div>
+                <div class="float-left status-name">
+                    <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Open</h5>
+                </div>
+                <div class="text-primary font-4xl float-right font-weight-bold number">
+                    <span>4</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-      <div class="card p-4" [ngClass]="{'active-card':activeStatus=='1'}" (click)="getMissions(1)">Open</div>
+
+
+     <!--Open-->
+  <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="card stat" (click)="getMissions(2)" [ngClass]="{'active-card':activeStatus=='2'}">
+            <div class="card-body clearfix text-primary">
+                <div class="mr-5 float-left status-chart">
+                </div>
+                <div class="float-left status-name">
+                    <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Running</h5>
+                </div>
+                <div class="text-primary font-4xl float-right font-weight-bold number">
+                    <span>0</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-      <div class="card p-4" [ngClass]="{'active-card':activeStatus=='2'}" (click)="getMissions(2)">Running</div>
-    </div>
-    <div class="col-md-3">
-      <div class="card p-4" [ngClass]="{'active-card':activeStatus=='0'}" (click)="getMissions(0)">Saved</div>
+
+
+
+
+        <!--Open-->
+  <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="card stat" (click)="getMissions(0)" [ngClass]="{'active-card':activeStatus=='0'}">
+            <div class="card-body clearfix text-primary">
+                <div class="mr-5 float-left status-chart">
+                </div>
+                <div class="float-left status-name">
+                    <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Saved</h5>
+                </div>
+                <div class="text-primary font-4xl float-right font-weight-bold number">
+                    <span>1</span>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- <div class="col-md-2">
       <div class="card p-4">Closed</div>

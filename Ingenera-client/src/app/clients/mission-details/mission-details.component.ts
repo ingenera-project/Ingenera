@@ -3,7 +3,7 @@ import { MissionService } from '../services'
 import {
   ActivatedRoute,
   Params,
-  Router
+  Router,
 } from '@angular/router';
 @Component({
   selector: 'app-mission-details',
@@ -12,6 +12,7 @@ import {
 })
 export class MissionDetailsComponent implements OnInit {
   missionId
+  isSaved = false
   missionData = {}
   constructor(
     private route: ActivatedRoute,
@@ -30,10 +31,16 @@ export class MissionDetailsComponent implements OnInit {
     this.missionSVC.getMissionsById(this.missionId).then(({ data }) => {
       console.log('missionDetails: ', data)
       this.missionData = data[0]
+      this.isSaved = data[0].status == '0'
     })
   }
 
-  onPublishMission(misionId) {
-
+  onPublishMission(mission) {
+    let updatedMission = { id: mission._id, status: 1 }
+    this.missionSVC.updateMission(updatedMission).then(data => {
+      if (data.status == 200) {
+        this.isSaved = false
+      }
+    })
   }
 }
