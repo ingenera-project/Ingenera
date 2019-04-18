@@ -7,13 +7,12 @@ const router = express.Router();
 */
 const addMission = require('./add-mission');
 const updateMission = require('./edit-mission');
-const publishMission = require('./publish-missions')
-const clientMissions = require('./client-missions')
-const missionById = require('./Mission-by-id')
+const publishMission = require('./publish-missions');
+const clientMissions = require('./client-missions');
+const missionById = require('./Mission-by-id');
 /*
     Routes
 */
-console.log("ts test")
 router.post('/create', addMission);
 router.post('/update', updateMission);
 router.get('/publish', publishMission);
