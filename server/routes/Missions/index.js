@@ -10,6 +10,7 @@ const updateMission = require('./edit-mission');
 const publishMission = require('./publish-missions');
 const clientMissions = require('./client-missions');
 const missionById = require('./Mission-by-id');
+const allMissionsById = require('./all-missions-by-id');
 /*
     Routes
 */
@@ -18,7 +19,7 @@ router.post('/update', updateMission);
 router.get('/publish', publishMission);
 router.get('/misisonById/:missionId', missionById);
 router.get('/client/:userId/status/:statusId', clientMissions);
-
+router.get('/allMissionsById/:userId', allMissionsById);
 
 
 module.exports = router;
