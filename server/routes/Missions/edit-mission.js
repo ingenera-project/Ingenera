@@ -12,7 +12,6 @@ module.exports = updateMission =  (req, res) => {
                 res.sendStatus(500);
                 return;
             } else {
-                console.log('OK updated √')
                 res.send({ message: "Has been updated", status: 200, payload: data });
                 return;
             }

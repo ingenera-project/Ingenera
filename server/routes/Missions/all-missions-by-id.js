@@ -1,6 +1,6 @@
 const { Missions } = require('../../../Database/missionsSchema');
 
-module.exports = allMissionsById = (req, res) => {
+module.exports = allMissionsByClientId = (req, res) => {
     let { userId } = req.params;
     let { query } = req;
     if (!!query.count) {
