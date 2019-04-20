@@ -47,7 +47,8 @@ export class CreateMissionComponent implements OnInit {
       address: ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(".*\\S.*[a-zA-z0-9 ]")])],
       description: ['', Validators.compose([Validators.required, Validators.minLength(2)])],
       missionDates: ['', Validators.compose([Validators.required])],
-      budget: ['']
+      budget: [''],
+      ASAP: ['']
     });
 
   }
@@ -94,7 +95,8 @@ export class CreateMissionComponent implements OnInit {
       keywords: this.keywords,
       status: statusID, // {0: "save without puplish" , 1:"save and publish"}
       userId: this._Auth.getUser().id,
-      sections:this.filterSection()
+      sections: this.filterSection(),
+      ASAP: this.missionForm.value.ASAP == "" ? false : true
     }
     this.missionSVC.create(newMission)
       .then(({ data }) => {

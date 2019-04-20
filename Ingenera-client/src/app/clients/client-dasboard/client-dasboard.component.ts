@@ -44,6 +44,7 @@ export class ClientDasboardComponent implements OnInit {
       this.missionSVC.getMissionsByStatus(missionStatusID, userId)
         .then(({ data }) => {
           this.missions = data
+          console.log(this.missions)
         })
         .catch(err => {
           console.log(err)
