@@ -4,9 +4,9 @@
   <div class="row client-cards">
     
 
-    <!--total-->
+    <!--All-->
     <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="card stat" (click)="getMissions(3)" [ngClass]="{'active-card':activeStatus=='3'}">
+            <div class="card stat" (click)="getAllMissions(-1)" [ngClass]="{'active-card':activeStatus=='-1'}">
                 <div class="card-body clearfix text-primary">
                     <div class="mr-5 float-left status-chart">
                     </div>
@@ -23,7 +23,7 @@
 
   <!--Open-->
   <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card stat" (click)="getMissions(1)" [ngClass]="{'active-card':activeStatus=='1'}">
+        <div class="card stat" (click)="getMissionsByStatus(1)" [ngClass]="{'active-card':activeStatus=='1'}">
             <div class="card-body clearfix text-primary">
                 <div class="mr-5 float-left status-chart">
                 </div>
@@ -40,7 +40,7 @@
 
      <!--Open-->
   <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card stat" (click)="getMissions(2)" [ngClass]="{'active-card':activeStatus=='2'}">
+        <div class="card stat" (click)="getMissionsByStatus(2)" [ngClass]="{'active-card':activeStatus=='2'}">
             <div class="card-body clearfix text-primary">
                 <div class="mr-5 float-left status-chart">
                 </div>
@@ -59,7 +59,7 @@
 
         <!--Open-->
   <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card stat" (click)="getMissions(0)" [ngClass]="{'active-card':activeStatus=='0'}">
+        <div class="card stat" (click)="getMissionsByStatus(0)" [ngClass]="{'active-card':activeStatus=='0'}">
             <div class="card-body clearfix text-primary">
                 <div class="mr-5 float-left status-chart">
                 </div>
@@ -127,7 +127,7 @@
 
 
             <span>
-                <span *ngFor="let mission of missions">
+                <span *ngFor="let mission of missions  | paginate: {id: 'list-pager', itemsPerPage: 3, currentPage: p, totalItems: total }">
 
                     <li class="d-flex flex-row permission-list-item list-group-item text-gray list-desktop text-center"
                     (click)="onMissionSelected(mission)">
@@ -193,7 +193,7 @@
 
 
         <span>
-            <span *ngFor="let mission of missions ;">
+            <span *ngFor="let mission of missions | paginate: {id: 'list-pager', itemsPerPage: 5, currentPage: p, totalItems: total }">
                 <span class="list-mobile  d-md-none d-lg-none d-xl-none text-gray">
                     <li class="row-1 d-flex flex-row  list-group-item mt-3 ">
 
@@ -227,4 +227,11 @@
 
 </div>
 
+
+
+</div>
+
+<div class="text-center mt-3">
+    <pagination-controls id="list-pager" 
+    (pageChange)="onPageChange($event)" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
 </div>
