@@ -17,9 +17,12 @@ let missionsSchema = new Schema({
     budget: { type: Number },
     isDeleted: { type: Number }, // 0 or 1
     // pinding: { type: Number }
-    startDate:{ type: String },
-    endDate:{ type: String },
-    duration:{ type: String },
+    startDate: { type: String },
+    endDate: { type: String },
+    duration: { type: String },
+    ASAP: { type: Boolean },
+    creationDate: { type: Date },
+    publishDate: { type: Date }
 })
 
 

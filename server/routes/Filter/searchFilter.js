@@ -4,6 +4,8 @@ let resultArray = []
 
 module.exports = searchFilter = async (req, res) => {
     const { filter } = req.query
+// ["java", "node"] ["computer", "jfd"]
+
     let MainArray = JSON.parse(filter);
     await asyncForEach(MainArray, async (ele) => {
         resultArray = await onFinder(ele);
