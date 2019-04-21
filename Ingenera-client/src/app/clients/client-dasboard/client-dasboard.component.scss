@@ -5,13 +5,11 @@ cursor: pointer;
     &:hover{
     background-color: #eee
 }
-
 }
 .active-card{
     background-color: #eee
 }
 }
-
 .missions-list-field {
     width: 25%;
 }
@@ -84,5 +82,23 @@ cursor: pointer;
                 border-bottom-right-radius: 0.5rem;
             }
         }
+    }
+}
+
+.mission-mobile-div{
+    background-color: #eee;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 15px;
+    &:hover{ 
+        cursor: pointer;
+        color: #fff;
+        background-color: #6eaade;
+        .location{
+             color:#eee
+        }
+    }
+    .location{
+        color:#828282;
     }
 }

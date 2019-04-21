@@ -1,12 +1,9 @@
 <div class="">
-  <h4>Client Dashboard</h4>
-
-  <div class="row client-cards">
-    
-
-    <!--total-->
-    <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="card stat" (click)="getMissions(3)" [ngClass]="{'active-card':activeStatus=='3'}">
+    <h4>Client Dashboard</h4>
+    <div class="row client-cards">
+        <!--All-->
+        <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="card stat" (click)="getAllMissions(-1)" [ngClass]="{'active-card':activeStatus=='-1'}">
                 <div class="card-body clearfix text-primary">
                     <div class="mr-5 float-left status-chart">
                     </div>
@@ -19,212 +16,144 @@
                 </div>
             </div>
         </div>
-
-
-  <!--Open-->
-  <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card stat" (click)="getMissions(1)" [ngClass]="{'active-card':activeStatus=='1'}">
-            <div class="card-body clearfix text-primary">
-                <div class="mr-5 float-left status-chart">
-                </div>
-                <div class="float-left status-name">
-                    <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Open</h5>
-                </div>
-                <div class="text-primary font-4xl float-right font-weight-bold number">
-                    <span>4</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-     <!--Open-->
-  <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card stat" (click)="getMissions(2)" [ngClass]="{'active-card':activeStatus=='2'}">
-            <div class="card-body clearfix text-primary">
-                <div class="mr-5 float-left status-chart">
-                </div>
-                <div class="float-left status-name">
-                    <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Running</h5>
-                </div>
-                <div class="text-primary font-4xl float-right font-weight-bold number">
-                    <span>0</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
         <!--Open-->
-  <div id="all" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
-        <div class="card stat" (click)="getMissions(0)" [ngClass]="{'active-card':activeStatus=='0'}">
-            <div class="card-body clearfix text-primary">
-                <div class="mr-5 float-left status-chart">
+        <div id="open" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="card stat" (click)="getMissionsByStatus(1)" [ngClass]="{'active-card':activeStatus=='1'}">
+                <div class="card-body clearfix text-primary">
+                    <div class="mr-5 float-left status-chart">
+                    </div>
+                    <div class="float-left status-name">
+                        <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Open</h5>
+                    </div>
+                    <div class="text-primary font-4xl float-right font-weight-bold number">
+                        <span>4</span>
+                    </div>
                 </div>
-                <div class="float-left status-name">
-                    <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Saved</h5>
+            </div>
+        </div>
+        <!--running-->
+        <div id="running" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="card stat" (click)="getMissionsByStatus(2)" [ngClass]="{'active-card':activeStatus=='2'}">
+                <div class="card-body clearfix text-primary">
+                    <div class="mr-5 float-left status-chart">
+                    </div>
+                    <div class="float-left status-name">
+                        <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Running</h5>
+                    </div>
+                    <div class="text-primary font-4xl float-right font-weight-bold number">
+                        <span>0</span>
+                    </div>
                 </div>
-                <div class="text-primary font-4xl float-right font-weight-bold number">
-                    <span>1</span>
+            </div>
+        </div>
+
+        <!--saved-->
+        <div id="saved" class="stats all col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <div class="card stat" (click)="getMissionsByStatus(0)" [ngClass]="{'active-card':activeStatus=='0'}">
+                <div class="card-body clearfix text-primary">
+                    <div class="mr-5 float-left status-chart">
+                    </div>
+                    <div class="float-left status-name">
+                        <h5 class="text-primary mb-0 text-uppercase font-weight-bold text-gray">Saved</h5>
+                    </div>
+                    <div class="text-primary font-4xl float-right font-weight-bold number">
+                        <span>1</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="col-md-2">
-      <div class="card p-4">Closed</div>
-    </div> -->
-  </div>
+
+    <div class="mt-5">
+        <!-- desktop view-->
+        <div class="mission-table  d-none d-md-block d-lg-block d-xl-block">
+            <ul class="list-group missions-lists text-center">
+                <!-- header -->
+                <li class="d-flex flex-row align-items-start missions-list-header list-group-item header-desktop">
 
 
-    <!-- <div class="p-5">
-    <button class="btn btn-info" (click)="goToMission()"> Create Mission </button>
-  </div> -->
+                    <!--id-->
+                    <div class="missions-list-field">
+                        <span class="field-header-text">title</span>
+                    </div>
+                    <!--code-->
+                    <div class="missions-list-field">
+                        <span class="field-header-text">Status</span>
+                    </div>
+                    <!--DESCRIPTION-->
+                    <div class="missions-list-field">
+                        <span class="field-header-text">address</span>
+                    </div>
+                    <!--StartDate-->
+                    <div class="missions-list-field">
+                        <span class="field-header-text">Start Date</span>
+                    </div>
+                    <!--Publishe-->
+                    <div class="missions-list-field">
+                        <span class="field-header-text">Publishe Date</span>
+                    </div>
+                    <!--Requests-->
+                    <div class="missions-list-field">
+                        <span class="field-header-text">Requests</span>
+                    </div>
+
+                </li>
 
 
+                <span>
+                    <span *ngFor="let mission of missions  | paginate: {id: 'list-pager', itemsPerPage: 3, currentPage: p, totalItems: total }">
 
+                        <li class="d-flex flex-row permission-list-item list-group-item text-gray list-desktop text-center" (click)="onMissionSelected(mission)">
 
+                            <div class="missions-list-field">
+                                <span>{{mission.title}}</span>
+                            </div>
 
-  <div class="mt-5">
+                            <div class="missions-list-field">
+                                <span>{{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</span>
+                            </div>
 
-<!-- 
-    <div class="search mb-3">
-        <div class="row text-gray">
-            <div class="col-md-12 keyword-box mb-2">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="textInput" #keywordInput type="text" class="form-control pl-5" placeholder="type a keyword" aria-describedby="basic-addon1"
-                    name="keyword">
-            </div>
+                            <div class="missions-list-field ">
+                                <span>{{mission.address}} | {{mission.serviceLocation=='0'? 'Service Provider' : 'SUR'}}</span>
+                            </div>
+                            <div class="missions-list-field ">
+                                <span>{{mission.startDate}}</span>
+                            </div>
+                            <div class="missions-list-field ">
+                                <span>{{mission.startDate}}</span>
+                            </div>
+                            <div class="missions-list-field ">
+                                <span>{{mission.Requests ? mission.Requests :'0'}}</span>
+                            </div>
+                        </li>
+                    </span>
+
+                </span>
+            </ul>
         </div>
-    </div> -->
 
-    <!-- desktop view-->
-    <div class="mission-table  d-none d-md-block d-lg-block d-xl-block">
-        <ul class="list-group missions-lists text-center">
-            <!-- header -->
-            <li class="d-flex flex-row align-items-start missions-list-header list-group-item header-desktop">
-
-
-                <!--id-->
-                <div class="missions-list-field">
-                    <span class="field-header-text">title</span>
-                </div>
-                <!--code-->
-                <div class="missions-list-field">
-                    <span class="field-header-text">Status</span>
-                </div>
-                <!--DESCRIPTION-->
-                <div class="missions-list-field">
-                    <span class="field-header-text">address</span>
-                </div>
-                <!--TYPE-->
-                <div class="missions-list-field">
-                    <span class="field-header-text">StartDate</span>
-                </div>
-
-            </li>
-
-
-            <span>
-                <span *ngFor="let mission of missions">
-
-                    <li class="d-flex flex-row permission-list-item list-group-item text-gray list-desktop text-center"
-                    (click)="onMissionSelected(mission)">
-
-                        <div class="missions-list-field">
-                            <span>{{mission.title}}</span>
-                        </div>
-
-                        <div class="missions-list-field">
-                            <span>{{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</span>
-                        </div>
-
-                        <div class="missions-list-field ">
-                            <span>{{mission.address}}</span>
-                        </div>
-                        <div class="missions-list-field ">
-                            <span>{{mission.startDate}}</span>
-                        </div>
-                    </li>
+        <!-- mobileview-->
+        <div class="projects-table mobile">
+            <span class="list-group missions-lists d-md-none d-lg-none d-xl-none">
+                <span>
+                    <span *ngFor="let mission of missions | paginate: {id: 'list-pager', itemsPerPage: 5, currentPage: p, totalItems: total }">
+                        <span class="list-mobile  d-md-none d-lg-none d-xl-none text-gray">
+                            <div class="mission-mobile-div"
+                            (click)="onMissionSelected(mission)">
+                                <h5>{{mission.title}}</h5>
+                                <div>Start:{{mission.startDate}}</div>
+                                <div>Published:{{mission.startDate}}</div>
+                                <div class="location"><i class="fa fa-map-marker"></i> {{mission.address}} | {{mission.serviceLocation=='0'?
+                                    'Service Provider' : 'SUR'}}</div>
+                                <div class="text-right">{{ mission.Requests ? mission.Requests :'0'}} Requests</div>
+                            </div>
+                        </span>
+                    </span>
                 </span>
-
             </span>
-
-        </ul>
-<!-- 
-        <div class="text-center mt-3">
-            <div class="text-center mt-3">
-                <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
-            </div>
-        </div> -->
-
+        </div>
     </div>
-
-  <!-- mobileview-->
-  <div class="projects-table mobile">
-    <ul class="list-group missions-lists d-md-none d-lg-none d-xl-none">
-        <!-- header -->
-
-        <li class="mobile-header d-flex flex-row  list-group-item text-center  text-primary">
-
-
-            <!--ID-->
-            <div class="missions-list-field  project-name-header">
-                <span class="field-header-text">title</span>
-            </div>
-
-            <!--CODE-->
-            <div class="missions-list-field  permission-header pl-1">
-                <span class="field-header-text">Status</span>
-            </div>
-
-            <!--DESCRIPTION-->
-            <div class="missions-list-field  permission-desc">
-                <span class="field-header-text">Address</span>
-            </div>
-
-            <!--TYPE-->
-            <div class="missions-list-field  permission-desc">
-                <span class="field-header-text">TYPE</span>
-            </div>
-
-        </li>
-
-
-        <span>
-            <span *ngFor="let mission of missions ;">
-                <span class="list-mobile  d-md-none d-lg-none d-xl-none text-gray">
-                    <li class="row-1 d-flex flex-row  list-group-item mt-3 ">
-
-                        <div class="missions-list-field col-Id">
-                            <span>
-                                {{mission.title}}</span>
-                        </div>
-
-                        <div class="missions-list-field col-code">
-                            <span>
-                              {{mission.status==0 ?'Saved':mission.status==1 ?'Open':'Running'}}</span>
-                        </div>
-
-
-                    </li>
-                    <li class="row-2 d-flex flex-row  list-group-item ">
-
-                        <div class="missions-list-field col-desc">
-                            <span>
-                               {{mission.address}}</span>
-                        </div>
-                    
-                    </li>
-                </span>
-            </span>
-        </span>
-
-    </ul>
 </div>
-
-
-</div>
-
+<div class="text-center mt-3">
+    <pagination-controls id="list-pager" (pageChange)="onPageChange($event)" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
 </div>
