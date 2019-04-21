@@ -10,7 +10,10 @@ const updateMission = require('./edit-mission');
 const publishMission = require('./publish-missions');
 const clientMissions = require('./client-missions');
 const missionById = require('./Mission-by-id');
-const allMissionsByClientId = require('./all-missions-by-id');
+const allMissionByClientId = require('./all-missions-by-id');
+const dashboardSumary = require('./dashboard-summary');
+
+
 /*
     Routes
 */
@@ -19,7 +22,12 @@ router.post('/update', updateMission);
 router.get('/publish', publishMission);
 router.get('/misisonById/:missionId', missionById);
 router.get('/client/:userId/status/:statusId', clientMissions);
-router.get('/allMissionsById/:userId', allMissionsByClientId);
+router.get('/allMissionsByUserId/:userId', allMissionByClientId);
+router.get('/dashboardSumary', dashboardSumary)
+
+
+
+
 
 
 module.exports = router;

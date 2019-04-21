@@ -1,28 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const baseAuth = require('../access-controll/base-auth')
-
+const authController = require('./Auth/index');
+const Missions = require('./Missions/index');
+const Filter = require('./Filter');
 
 
 /* GET home page. */
-const authController = require('./Auth/index');
 router.use('/auth', authController);
 
 
 /*
   * Get Missions
 */
-
-const Missions = require('./Missions/index');
 router.use('/mission', Missions);
 
+
+/**
+  * FILTERATION
+ */
+
+router.use('/search', Filter);
 
 /*
   * security checking
 */
 router.get('/secure', baseAuth, (req, res) => {
-	const { user } = req;
-	res.send(user);
+  const { user } = req;
+  res.send(user);
 });
 
 module.exports = router;
