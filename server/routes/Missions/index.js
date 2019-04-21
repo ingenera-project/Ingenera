@@ -22,7 +22,7 @@ router.get('/publish', publishMission);
 router.get('/misisonById/:missionId', missionById);
 router.get('/client/:userId/status/:statusId', clientMissions);
 router.get('/allMissionsByUserId/:userId', allMissionByClientId);
-router.get('/dashboardSumary', dashboardSumary)
+router.get('/dashboardSumary', dashboardSumary);
 
 
 

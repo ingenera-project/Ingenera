@@ -1,12 +1,16 @@
 const { Missions } = require('../../../Database/missionsSchema');
 const { EditAndValidate } = require('../../Helper/utility')
 
-module.exports = updateMission =  (req, res) => {
+module.exports = updateMission = (req, res) => {
     let { body } = req;
     let bodyKeys = Object.keys(body);
-    let updateMission =  EditAndValidate(body, bodyKeys)
+    let obj = {}
+    let updateMission = EditAndValidate(body, bodyKeys)
     if (Object.keys(updateMission).length) {
-        Missions.findOneAndUpdate({ _id: body.id }, { $set: updateMission }, (err, data) => {
+
+        body.status === 1 ? obj = { ...updateMission, publishDate: Date.now() } : obj = updateMission
+
+        Missions.findOneAndUpdate({ _id: body.id }, { $set: obj }, (err, data) => {
             if (err) {
                 console.log(err);
                 res.sendStatus(500);
