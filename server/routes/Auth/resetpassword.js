@@ -1,5 +1,6 @@
 const { users } = require('../../../Database/usersSchema')
 const { hash } = require('bcryptjs');
+//
 module.exports = resetPass = (req, res) => {
     const { id, newPass } = req.body;
     users.findOne({
