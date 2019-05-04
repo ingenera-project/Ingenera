@@ -12,8 +12,9 @@ export class MissionService {
     }
 
 
-    getMissionsByStatus(statusId,userId) {
-        return axios.get(`api/mission/client/${userId}/status/${statusId}`)
+    getMissionsByStatus(statusId,page=1,userId) {
+        return axios.get(`api/mission/client/${userId}/status/${statusId}
+        ?count=10&page=${page}`)
     }
     getMissionsById(missionId) {
         return axios.get(`api/mission/misisonById/${missionId}`)
@@ -23,8 +24,11 @@ export class MissionService {
         return axios.post(`api/mission/update`,mission)
     }
 
-    getAllMissionsByClient(userId){
-        return axios.get(`api/allMissionsById/${userId}`)
+    getAllMissionsByClient(userId,page=1){
+        return axios.get(`api/mission/allMissionsByUserId/${userId}?count=10&page=${page}`)
+    }
+    GetMissionsCountSummary(){
+        return axios.get(`api/mission/dashboardSumary`)
     }
 
 }
