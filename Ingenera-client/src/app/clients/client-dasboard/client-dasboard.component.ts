@@ -34,7 +34,9 @@ export class ClientDasboardComponent implements OnInit {
 
   // dahsboard summaru
   GetMissionsCountSummary() {
-    this.missionSVC.GetMissionsCountSummary().then(({ data }) => {
+    let userId=this._Auth.getUser().id
+    console.log("check the userId =====>", userId)
+    this.missionSVC.GetMissionsCountSummary(userId).then(({ data }) => {
       this.AllMissionsTotal = data.all || '0';
       this.SavedTotal = data.saved || '0';
       this.RunningTotal = data.running || '0';

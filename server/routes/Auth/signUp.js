@@ -25,7 +25,7 @@ module.exports = register = (req, res) => {
 				}
 				const newUsers = new users({ ...req.body, password: hash });
 
-				newUsers.save((err) => {
+				newUsers.save((err, savedUser) => {
 					if (err) {
 						res.sentStatus(500);
 					}
@@ -51,8 +51,8 @@ module.exports = register = (req, res) => {
 							console.log('Email Sent');
 						}
 					})
-
-					const token = jwt.sign(req.body, config.secret);
+					console.log('check id ==>', savedUser._id)
+					const token = jwt.sign({...req.body, id: savedUser._id}, config.secret);
 					res.send({
 						status: 200,
 						token,

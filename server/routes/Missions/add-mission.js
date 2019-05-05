@@ -4,7 +4,7 @@ const { Missions } = require('../../../Database/missionsSchema');
 module.exports = addMisstion = (req, res) => {
 
     const { status, userId } = req.body;
-    console.log("check body =====>", userId)
+  
     let obj = {}
     status === 1 ? obj = { ...req.body, publishDate: Date.now() } : obj = req.body
 
@@ -15,6 +15,7 @@ module.exports = addMisstion = (req, res) => {
             res.sendStatus(500);
             return;
         }
+        console.log("check data =====>",data)
         res.send({ message: "Your mission has been saved", status: 200 })
         return;
     });

@@ -24,7 +24,7 @@ module.exports = searchFilter = async (req, res) => {
                 sections: {
                     $elemMatch:
                     {
-                        display: elem
+                        name: elem
                     }
                 }
             }))

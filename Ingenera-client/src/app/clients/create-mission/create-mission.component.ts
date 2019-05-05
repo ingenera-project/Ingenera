@@ -102,6 +102,7 @@ export class CreateMissionComponent implements OnInit {
       .then(({ data }) => {
         this.toast.presentToast(data.message)
         this.missionForm.reset()
+
         console.log(data)
       })
       .catch(err => {

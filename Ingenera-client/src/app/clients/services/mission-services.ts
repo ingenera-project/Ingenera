@@ -27,8 +27,8 @@ export class MissionService {
     getAllMissionsByClient(userId,page=1){
         return axios.get(`api/mission/allMissionsByUserId/${userId}?count=10&page=${page}`)
     }
-    GetMissionsCountSummary(){
-        return axios.get(`api/mission/dashboardSumary`)
+    GetMissionsCountSummary(userId){
+        return axios.get(`api/mission/dashboardSumary/${userId}`)
     }
 
 }
