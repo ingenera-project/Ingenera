@@ -5,7 +5,8 @@ module.exports = dashboardSumary = (req, res) => {
     let obj = {}
     let counter = 1
     let secondCounter = 1
-    Missions.find({}, (err, data) => {
+    let { userId } = req.params;
+    Missions.find({ userId, isDeleted:0 }, (err, data) => {
         if (err) {
             console.log(err);
             res.sendStatus(500);
