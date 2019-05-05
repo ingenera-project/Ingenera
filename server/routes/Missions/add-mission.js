@@ -3,7 +3,8 @@ const { Missions } = require('../../../Database/missionsSchema');
 
 module.exports = addMisstion = (req, res) => {
 
-    const { status } = req.body;
+    const { status, userId } = req.body;
+    console.log("check body =====>", userId)
     let obj = {}
     status === 1 ? obj = { ...req.body, publishDate: Date.now() } : obj = req.body
 
