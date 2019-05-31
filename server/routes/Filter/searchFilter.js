@@ -56,7 +56,7 @@ module.exports = searchFilter = async (req, res) => {
     }
     else if (duration) {
         globalArray.push(await globalSerch({
-            duration: { $lte: duration }
+            duration: { $gte: duration }
         }));
     }
     else if (experience) {

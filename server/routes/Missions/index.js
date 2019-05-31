@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { legitProjectManager, tokenShouldExist } = require('../../access-controll/base-auth')
 
 
 /*
@@ -17,13 +18,13 @@ const dashboardSumary = require('./dashboard-summary');
 /*
     Routes
 */
-router.post('/create', addMission);
-router.post('/update', updateMission);
-router.get('/publish', publishMission);
-router.get('/misisonById/:missionId', missionById);
-router.get('/client/:userId/status/:statusId', clientMissions);
-router.get('/allMissionsByUserId/:userId', allMissionByClientId);
-router.get('/dashboardSumary/:userId', dashboardSumary);
+router.post('/create', legitProjectManager, addMission);
+router.post('/update', legitProjectManager, updateMission);
+router.get('/publish', tokenShouldExist, publishMission);
+router.get('/misisonById/:missionId', legitProjectManager, missionById);
+router.get('/client/:userId/status/:statusId', legitProjectManager, clientMissions);
+router.get('/allMissionsByUserId/:userId', legitProjectManager, allMissionByClientId);
+router.get('/dashboardSumary/:userId', legitProjectManager, dashboardSumary);
 
 
 

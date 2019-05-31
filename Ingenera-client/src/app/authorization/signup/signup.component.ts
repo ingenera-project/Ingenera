@@ -41,8 +41,7 @@ export class SignupComponent implements OnInit {
           } else {
             localStorage.setItem("token", data.token)
             localStorage.setItem("loggedIn", 'true')
-            data.role === "pm" ? this.router.navigate(['client']) : this.router.navigate(['bm'])
-            this.toast.presentToast(data.message)
+            this.toast.presentToast("To verify, please check your email")
           }
         }).catch(err => {
           console.log(err)

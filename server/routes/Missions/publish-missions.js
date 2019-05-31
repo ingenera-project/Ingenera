@@ -1,9 +1,7 @@
 const { Missions } = require('../../../Database/missionsSchema');
 
 module.exports = publishMissions = (req, res) => {
-    //?count=10&page=1
     let { query } = req;
-    console.log("check queries ", query.count, query.page, query);
     if (!!query.count) {
         query.count = parseInt(query.count)
     } else {
@@ -15,7 +13,7 @@ module.exports = publishMissions = (req, res) => {
     } else {
         query.skip = 0;
     }
-    Missions.find({status: 1, isDeleted: 0 })
+    Missions.find({ status: 1, isDeleted: 0 })
         .limit(query.count) //limit
         .skip(query.skip) // skip
         .exec((err, data) => {
