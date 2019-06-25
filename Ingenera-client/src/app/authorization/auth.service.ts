@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Axios from 'axios';
+import Axios from '../../../e2e/src/api';
 import decode from 'jwt-decode';
 @Injectable()
 export class Authervice {
@@ -9,20 +9,20 @@ export class Authervice {
 
   login(email: string, password: string) {
     console.log('login with ', email, ' and ', password)
-    return Axios.post('api/auth/login', { email, password })
+    return Axios.post('/auth/login', { email, password })
   }
 
   signup(user: object) {
     console.log('lets signup')
-    return Axios.post('api/auth/signup', user)
+    return Axios.post('/auth/signup', user)
   }
 
   forgetPassword(email: String) {
-    return Axios.post('api/auth/forget', { email })
+    return Axios.post('/auth/forget', { email })
   }
 
   resetPassword(newPass: String, id: String) {
-    return Axios.post('api/auth/reset', { newPass, id })
+    return Axios.post('/auth/reset', { newPass, id })
   }
 
   getUser() {

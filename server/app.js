@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-// const client = require('../Database/index');
+const cors = require('cors');
+const db = require('./../Database/index');
 const indexRouter = require('./routes/index');
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../Ingenera-client/dist/Ingenera-client')));
+app.use(cors())
 app.use('/api', indexRouter);
 app.use((err, req, res, next) => {
 	// set locals, only providing error in development

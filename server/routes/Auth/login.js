@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken');
-const config = require('../../utils/config');
+const config = require('../../config/config');
 const { compare } = require('bcryptjs');
 const { users } = require('../../../Database/usersSchema')
 module.exports = login = (req, res) => {
 	const { email, password } = req.body;
+	console.log("check data ", password)
 	users.findOne({ email }, (err, data) => {
 		console.log("check data ", data)
 		if (err) {
@@ -16,6 +17,7 @@ module.exports = login = (req, res) => {
 
 		} else {
 			compare(password, data.password, (err, match) => {
+				console.log("matching -===> ", match)
 				if (err) {
 					console.log(err)
 					res.sendStatus(500);
@@ -24,8 +26,8 @@ module.exports = login = (req, res) => {
 				if (match) {
 					const token = jwt.sign({
 						role: data.role,
-						email, id: data._id
-					}, config.secret);
+						email, userId: data._id
+					}, config.secretKey);
 					res.send({
 						role: data.role,
 						token,

@@ -1,54 +1,87 @@
-const Jwt = require('jsonwebtoken');
-const config = require('../utils/config');
-const { users } = require('../../Database/index')
-const createError = require('http-errors');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
+const { users } = require('../../Database/usersSchema')
 
-const confirmUserId = async (res) => {
-	// check if res.locals.userId is already there
-	if (res.locals.id) {
+const tokenShouldBeExist = async (token, res, next) => {
+	const user = jwt.verify(token, config.secretKey);
+	const userRes = await users.findOne({ _id: user.userId });
+	if (userRes._id.toString() === user.userId) {
+		return next();
+	}
+	res.sendStatus(401);
+	return;
+};
+
+
+
+const verifyUserIsProjectManager = async (token, res, next) => {
+	const user = jwt.verify(token, config.secretKey);
+	const userRes = await users.findOne({ _id: user.userId });
+	if (userRes._id.toString() === user.userId && userRes.role === 'pm') {
+		return next();
+	}
+	res.sendStatus(401);
+	return;
+};
+
+const verifyUserIsBusinessManager = async (token, res, next) => {
+	const user = jwt.verify(token, config.secretKey);
+	const userRes = await users.findOne({ _id: user.userId });
+	if (userRes._id.toString() === user.userId && userRes.role === 'bm') {
+		return next();
+	}
+	res.sendStatus(401);
+	return;
+};
+
+const verifyUserIsAdmin = async (token, res, next) => {
+	const user = jwt.verify(token, config.secretKey);
+	const userRes = await users.findOne({ _id: user.userId });
+	if (userRes._id.toString() === user.userId && userRes.role === 'Admin') {
+		return next();
+	}
+	res.sendStatus(401);
+	return;
+};
+
+const legitProjectManager = (req, res, next) => {
+	const token = req.get('Authorization').split(' ');
+	if (token[0] !== 'Bearer') {
+		res.sendStatus(401);
 		return;
 	}
-
-	// fetch userId and attach it if it is not there
-	const userResp = await users.findOne({
-		_id: res.locals.user.id,
-	});
-	return (res.locals.user.id = userResp.id);
+	return verifyUserIsProjectManager(token[1], res, next);
 };
 
-const baseAuthenticator = async (req, res, next) => {
-	try {
-		const token = (req.get('Authorization') || '').split(' ');
-		console.log(token)
-		// check for Bearer token
-		if (token[0] !== 'Bearer') {
-			res.render('error', {
-				message: 'Unauthorized action',
-				error: {
-					status: 401,
-					stack: 'Session expiered \n Please Login '
-				}
-
-			})
-			return;
-		}
-		// attach token to res
-		const decodedToken = await Jwt.verify(token[1], config.secret);
-		res.locals.user = decodedToken;
-		// ensure userId is attached to res.locals if not.
-		await confirmUserId(res);
-		return next();
-	} catch (error) {
-		console.log(error)
-		res.render('error', {
-			message: 'Unauthorized action',
-			error: {
-				status: 401,
-				stack: 'Session expiered \n Please Login'
-			}
-		})
-		return next(error);
+const legitBusinessManager = (req, res, next) => {
+	const token = req.get('Authorization').split(' ');
+	if (token[0] !== 'Bearer') {
+		res.sendStatus(401);
+		return;
 	}
+	return verifyUserIsBusinessManager(token[1], res, next);
 };
 
-module.exports = baseAuthenticator
+const legitAdmin = (req, res, next) => {
+	const token = req.get('Authorization').split(' ');
+	if (token[0] !== 'Bearer') {
+		res.sendStatus(401);
+		return;
+	}
+	return verifyUserIsAdmin(token[1], res, next);
+};
+const tokenShouldExist = (req, res, next) => {
+	const token = req.get('Authorization').split(' ');
+	if (token[0] !== 'Bearer') {
+		res.sendStatus(401);
+		return;
+	}
+	return tokenShouldBeExist(token[1], res, next);
+};
+
+module.exports = {
+	legitAdmin,
+	legitBusinessManager,
+	legitProjectManager,
+	tokenShouldExist
+};
