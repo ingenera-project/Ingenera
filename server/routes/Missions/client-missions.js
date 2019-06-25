@@ -7,7 +7,6 @@ module.exports = getPublishOrSaveMissions = (req, res) => {
      */
     const { userId, statusId } = req.params
     let { query } = req;
-    console.log('check user id  and queries', userId, statusId, query.count, query.page, query);
     if (!!query.count) {
         query.count = parseInt(query.count)
     } else {

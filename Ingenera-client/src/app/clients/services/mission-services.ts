@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
-
+import axios from '../../../../e2e/src/api'
 @Injectable()
 export class MissionService {
 
@@ -8,27 +7,23 @@ export class MissionService {
     constructor() { }
     create(mission) {
         console.log('create new mission', mission)
-        return axios.post('api/mission/create', mission)
+        return axios.post('/mission/create', mission)
     }
 
 
-    getMissionsByStatus(statusId,page=1,userId) {
-        return axios.get(`api/mission/client/${userId}/status/${statusId}
-        ?count=10&page=${page}`)
+    getMissionsByStatus(statusId, userId) {
+        return axios.get(`/mission/client/${userId}/status/${statusId}`)
     }
     getMissionsById(missionId) {
-        return axios.get(`api/mission/misisonById/${missionId}`)
+        return axios.get(`/mission/misisonById/${missionId}`)
     }
 
     updateMission(mission) {
-        return axios.post(`api/mission/update`,mission)
+        return axios.post(`/mission/update`, mission)
     }
 
-    getAllMissionsByClient(userId,page=1){
-        return axios.get(`api/mission/allMissionsByUserId/${userId}?count=10&page=${page}`)
-    }
-    GetMissionsCountSummary(userId){
-        return axios.get(`api/mission/dashboardSumary/${userId}`)
+    getAllMissionsByClient(userId) {
+        return axios.get(`/allMissionsById/${userId}`)
     }
 
 }
