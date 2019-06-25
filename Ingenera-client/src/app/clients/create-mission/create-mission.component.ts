@@ -94,7 +94,7 @@ export class CreateMissionComponent implements OnInit {
       experience: this.experience,
       keywords: this.keywords,
       status: statusID, // {0: "save without puplish" , 1:"save and publish"}
-      userId: this._Auth.getUser().id,
+      userId: this._Auth.getUser(),
       sections: this.filterSection(),
       ASAP: this.missionForm.value.ASAP == "" ? false : true
     }

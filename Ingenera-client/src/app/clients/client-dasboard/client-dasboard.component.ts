@@ -34,7 +34,7 @@ export class ClientDasboardComponent implements OnInit {
 
   // dahsboard summaru
   GetMissionsCountSummary() {
-    let userId=this._Auth.getUser().id
+    let userId=this._Auth.getUser()
     console.log("check the userId =====>", userId)
     this.missionSVC.GetMissionsCountSummary(userId).then(({ data }) => {
       this.AllMissionsTotal = data.all || '0';
@@ -52,7 +52,7 @@ export class ClientDasboardComponent implements OnInit {
     this.getAllListData()
   }
   getAllListData() {
-    const userId = this._Auth.getUser().id
+    const userId = this._Auth.getUser()
     this.missionSVC.getAllMissionsByClient(userId, this.p).then(({ data }) => {
       this.missions = data
       this.count=this.AllMissionsTotal
@@ -71,7 +71,7 @@ export class ClientDasboardComponent implements OnInit {
     this.getListData(missionStatusID, page)
   }
   getListData(missionStatusID, page) {
-    const userId = this._Auth.getUser().id
+    const userId = this._Auth.getUser()
     this.missionSVC.getMissionsByStatus(missionStatusID, page, userId)
       .then(({ data }) => {
         this.missions = data

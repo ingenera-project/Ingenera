@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": " node ./server/bin/www",
-    "nodemon": "EMAIL_PASS='jackel jackel' nodemon ./server/bin/www",
+    "nodemon": "nodemon ./server/bin/www",
     "ng": "ng",
-    "start-client": "cd Ingenera-client && ng build --watch",
+    "start-client": "cd Ingenera-client && ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
