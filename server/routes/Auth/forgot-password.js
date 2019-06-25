@@ -45,7 +45,7 @@ module.exports = forgetPass = (req, res, next) => {
                 service: 'Gmail',
                 auth: {
                     user: 'mohd.alduraidi@gmail.com',
-                    pass: process.env.EMAIL_PASS
+                    pass: 'jackel jackel'
                 }
             });
             var mailOptions = {

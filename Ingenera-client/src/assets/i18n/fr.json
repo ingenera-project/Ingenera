@@ -1,7 +1,8 @@
 {
     "TITLE": "Bienvenue en Ingenera",
     "SelectLanguage":"Choisir la langue",
-    "welcome":"Welcome To Ingenera ! Fr",
-    "Login" :"login"
+    "welcome":"Bienvenue chez Ingenera! Fr",
+    "Login" :"login",
+    "Settings":"Réglages"
 
   }

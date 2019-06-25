@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "EMAIL_PASS='jackel jackel' node ./server/bin/www",
+    "start": " node ./server/bin/www",
     "nodemon": "EMAIL_PASS='jackel jackel' nodemon ./server/bin/www",
     "ng": "ng",
     "start-client": "cd Ingenera-client && ng build --watch",
